@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "352370037881",
+    "project_id": "real-worth",
+    "storage_bucket": "real-worth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352370037881:android:ef8d324f4c3563a40870a8",
+        "android_client_info": {
+          "package_name": "com.example.real_worth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352370037881-n1ht1al8u2g0qbtu8ls3p67phdgv8au0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgzd1xKctl60FOerw6b3wDXMsW57w5wIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352370037881-n1ht1al8u2g0qbtu8ls3p67phdgv8au0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
