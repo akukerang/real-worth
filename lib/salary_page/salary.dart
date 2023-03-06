@@ -1,65 +1,7 @@
 import 'package:flutter/material.dart';
+import 'JobContainer.dart';
 import 'package:fl_chart/fl_chart.dart';
-
-final data = [
-  ScatterSpot(4, 40000),
-  ScatterSpot(5, 50000),
-  ScatterSpot(1, 50000),
-  ScatterSpot(3, 30000),
-  ScatterSpot(1, 10000),
-  ScatterSpot(2, 50000),
-  ScatterSpot(9, 20000),
-];
-
-final chart = ScatterChart(
-  ScatterChartData(
-    backgroundColor: Colors.white,
-    scatterSpots: data,
-    minX: 0,
-    maxX: 10,
-    minY: 0,
-    maxY: 100000,
-    titlesData: FlTitlesData(
-      leftTitles: AxisTitles(
-        axisNameWidget: Text(
-          "Salary",
-          style: TextStyle(
-            color: Colors.grey[700],
-            fontSize: 18,
-          ),
-        ),
-        axisNameSize: 30,
-        sideTitles: SideTitles(
-          showTitles: false,
-        ),
-      ),
-      bottomTitles: AxisTitles(
-        axisNameWidget: Text(
-          "Years Worked",
-          style: TextStyle(
-            color: Colors.grey[700],
-            fontSize: 18,
-          ),
-        ),
-        axisNameSize: 24,
-        sideTitles: SideTitles(
-          showTitles: true,
-          reservedSize: 24,
-        ),
-      ),
-      rightTitles: AxisTitles(
-          sideTitles: SideTitles(
-        showTitles: true,
-        reservedSize: 45,
-      )),
-      topTitles: AxisTitles(
-          axisNameSize: 30,
-          sideTitles: SideTitles(
-            showTitles: false,
-          )),
-    ),
-  ),
-);
+import 'Scatter.dart';
 
 class SalaryPage extends StatelessWidget {
   @override
@@ -89,9 +31,8 @@ class SalaryPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SizedBox(height: 250.0, child: chart),
-            ),
+                padding: const EdgeInsets.all(12.0),
+                child: SizedBox(height: 250.0, child: Scatterplot())),
             const Text(
               "Similar Salary in the Area",
               style: TextStyle(
@@ -102,8 +43,14 @@ class SalaryPage extends StatelessWidget {
               ),
             ),
             Container(
-              height: 175,
-            ),
+                margin: EdgeInsets.all(24),
+                height: 150,
+                child: const JobContainer(
+                  company: "Google",
+                  salary: "\$120000",
+                  location: "Atlanta, GA",
+                  position: "Software Engineer",
+                )),
             const Text(
               "Tips for Asking for a Raise",
               style: TextStyle(

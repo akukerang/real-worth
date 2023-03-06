@@ -4,6 +4,7 @@ import 'package:real_worth/salary_page/salary.dart';
 import 'firebase_options.dart';
 import "login_forms/login_page1.dart";
 import "salary_page/salary.dart";
+import "salary_page/temp.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

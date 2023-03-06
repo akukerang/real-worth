@@ -40,6 +40,7 @@ dependencies:
   firebase_database: ^10.0.14
   fl_chart: ^0.61.0
   charts_flutter: ^0.12.0
+  syncfusion_flutter_charts: ^20.4.52
 
 dev_dependencies:
   flutter_test:
