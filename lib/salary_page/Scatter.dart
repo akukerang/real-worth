@@ -19,10 +19,26 @@ class _ScatterplotState extends State<Scatterplot> {
   late List<userData> chartData;
   late TooltipBehavior _tooltipBehavior;
   late ZoomPanBehavior _zoomPanBehavior;
+  List<userData> males = [
+    userData(1, 32000, "Male"),
+    userData(2, 42000, "Male"),
+    userData(4, 38000, "Male"),
+    userData(10, 41000, "Male"),
+  ];
+
+  List<userData> females = [
+    userData(2, 40000, "Female"),
+    userData(6, 34000, "Female"),
+    userData(6, 34000, "Female"),
+    userData(5, 60000, "Female"),
+  ];
+
+  List<userData> other = [
+    userData(1, 40000, "Other"),
+  ];
 
   @override
   void initState() {
-    chartData = getChartData();
     _tooltipBehavior = TooltipBehavior(enable: true);
     _zoomPanBehavior = ZoomPanBehavior(
       enablePinching: true,
@@ -37,8 +53,10 @@ class _ScatterplotState extends State<Scatterplot> {
   Widget build(BuildContext context) {
     return Container(
       child: SfCartesianChart(
-        primaryXAxis: NumericAxis(),
+        legend: Legend(isVisible: true),
+        primaryXAxis: NumericAxis(minimum: 1, maximum: 15),
         primaryYAxis: NumericAxis(
+          minimum: 10000,
           labelFormat: '\${value}',
         ),
         zoomPanBehavior: _zoomPanBehavior,
@@ -46,27 +64,31 @@ class _ScatterplotState extends State<Scatterplot> {
         series: <ChartSeries>[
           // Renders scatter chart
           ScatterSeries<userData, int>(
-              dataSource: chartData,
-              markerSettings: MarkerSettings(height: 13, width: 13),
-              enableTooltip: true,
-              xValueMapper: (userData data, _) => data.years,
-              yValueMapper: (userData data, _) => data.salary),
+            name: 'Male',
+            dataSource: males,
+            markerSettings: MarkerSettings(height: 10, width: 10),
+            enableTooltip: true,
+            xValueMapper: (userData data, _) => data.years,
+            yValueMapper: (userData data, _) => data.salary,
+          ),
+          ScatterSeries<userData, int>(
+            name: 'Female',
+            dataSource: females,
+            markerSettings: MarkerSettings(height: 12, width: 12),
+            enableTooltip: true,
+            xValueMapper: (userData data, _) => data.years,
+            yValueMapper: (userData data, _) => data.salary,
+          ),
+          ScatterSeries<userData, int>(
+            name: 'Other',
+            dataSource: other,
+            markerSettings: MarkerSettings(height: 12, width: 12),
+            enableTooltip: true,
+            xValueMapper: (userData data, _) => data.years,
+            yValueMapper: (userData data, _) => data.salary,
+          )
         ],
       ),
     );
-  }
-
-  List<userData> getChartData() {
-    final List<userData> chartData = [
-      userData(1, 32000, "Hello World"),
-      userData(2, 40000, "Hello World"),
-      userData(6, 34000, "Hello World"),
-      userData(1, 52000, "Hello World"),
-      userData(2, 42000, "Hello World"),
-      userData(4, 38000, "Hello World"),
-      userData(10, 41000, "Hello World"),
-      userData(5, 60000, "Hello World"),
-    ];
-    return chartData;
   }
 }

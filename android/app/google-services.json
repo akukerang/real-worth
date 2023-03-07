@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "352370037881",
+    "firebase_url": "https://real-worth-default-rtdb.firebaseio.com",
     "project_id": "real-worth",
     "storage_bucket": "real-worth.appspot.com"
   },
@@ -14,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "352370037881-n1ht1al8u2g0qbtu8ls3p67phdgv8au0.apps.googleusercontent.com",
+          "client_id": "352370037881-sc5ht276e03r4vduihviusmge31af1j6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.real_worth",
+            "certificate_hash": "d3a0aa030e438d9a0cf979596cca6bd337f68b4b"
+          }
+        },
+        {
+          "client_id": "352370037881-kkhjncp37c1ha7sejk0ij1oivelnqmo6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "352370037881-n1ht1al8u2g0qbtu8ls3p67phdgv8au0.apps.googleusercontent.com",
+              "client_id": "352370037881-kkhjncp37c1ha7sejk0ij1oivelnqmo6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
