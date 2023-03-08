@@ -57,6 +57,7 @@ class DefaultFirebaseOptions {
     appId: '1:352370037881:android:ef8d324f4c3563a40870a8',
     messagingSenderId: '352370037881',
     projectId: 'real-worth',
+    databaseURL: 'https://real-worth-default-rtdb.firebaseio.com',
     storageBucket: 'real-worth.appspot.com',
   );
 }
