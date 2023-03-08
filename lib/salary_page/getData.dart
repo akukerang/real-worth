@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../components/userData.dart';
 
 class getJobInfo extends StatelessWidget {
   final String UID;
@@ -28,18 +27,24 @@ class getJobInfo extends StatelessWidget {
               children: [
                 TextSpan(
                     text: "${data['job']['job_title']} ",
-                    style: TextStyle(fontWeight: FontWeight.w400)),
-                TextSpan(text: "Salaries at\n"),
+                    style: const TextStyle(fontWeight: FontWeight.w400)),
+                const TextSpan(text: "Salaries at\n"),
                 TextSpan(
                     text: "${data['job']['company_name']}",
-                    style: TextStyle(fontWeight: FontWeight.w400))
+                    style: const TextStyle(fontWeight: FontWeight.w400))
               ],
             ),
           );
         }
 
-        return Text("loading");
+        return const Text("loading");
       },
     );
   }
+}
+
+Future<String> getCompanyID(String docID) async {
+  final snap =
+      await FirebaseFirestore.instance.collection('users').doc(docID).get();
+  return snap.get('job.company_id');
 }
