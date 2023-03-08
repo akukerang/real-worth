@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
 import '../components/rect_tile.dart';
+import '../components/my_dropdown.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -11,9 +12,7 @@ class LoginPage extends StatelessWidget {
   final passwordController = TextEditingController();
 
   //sign user in
-  void signUserIn() {
-
-  }
+  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 60),
-              
+
               Text(
                 'Welcome!',
                 style: TextStyle(
@@ -33,7 +32,7 @@ class LoginPage extends StatelessWidget {
                   fontSize: 32,
                 ),
               ),
-              
+
               const SizedBox(height: 25),
 
               //username textfield
@@ -44,14 +43,14 @@ class LoginPage extends StatelessWidget {
               ),
 
               const SizedBox(height: 10),
-              
+
               //password TextField
               MyTextField(
                 controller: passwordController,
                 hintText: 'Password',
                 obscureText: true,
               ),
-              
+
               const SizedBox(height: 10),
 
               // forgot password
@@ -66,14 +65,14 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
               const SizedBox(height: 20),
 
               //sign in button
               MyButton(
                 onTap: signUserIn,
               ),
-              
+
               const SizedBox(height: 40),
 
               //or continue with
@@ -82,39 +81,33 @@ class LoginPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Divider(
-                        thickness: 1.0,
-                        color: Colors.grey[400]
+                      child: Divider(thickness: 1.0, color: Colors.grey[400]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'OR',
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                        ),
                       ),
                     ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Text(
-                      'OR',
-                      style: TextStyle(color: Colors.grey[700],
-                      
-                    ),
-                    ),
-                  ),
-                Expanded(
-                  child: Divider(
-                    thickness: 1.0,
-                    color: Colors.grey[400]
-                    ),
-                  )
-                ],
+                    Expanded(
+                      child: Divider(thickness: 1.0, color: Colors.grey[400]),
+                    )
+                  ],
                 ),
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               //google or email
-                const RectTile(
-                  imagePath: 'lib/images/google.png',
-                  imgDis: 'Continue with Google',
-                  ),
-                
-                const SizedBox(height: 50),
+              const RectTile(
+                imagePath: 'lib/images/google.png',
+                imgDis: 'Continue with Google',
+              ),
+
+              const SizedBox(height: 50),
 
               //not a memeber? register now
               Row(
@@ -126,10 +119,10 @@ class LoginPage extends StatelessWidget {
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      ),
                     ),
-              ],
-            ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

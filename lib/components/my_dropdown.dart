@@ -3,21 +3,29 @@ import 'package:flutter/material.dart';
 class MyDropdown extends StatefulWidget {
   final List<String> menuItems;
   const MyDropdown({
-    super.key,
+    Key? key,
     required this.menuItems,
-    });
+  }) : super(key: key);
   @override
   State<MyDropdown> createState() => _MyDropdownState();
 }
 
 class _MyDropdownState extends State<MyDropdown> {
-  String selectedmenuItem = ' ';
+  String selectedmenuItem = '';
+  @override
+  void initState() {
+    super.initState();
+    if (widget.menuItems.isNotEmpty) {
+      selectedmenuItem = widget.menuItems.first;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: DropdownButton(
         hint: const Text('Select Fruit'),
-        onChanged: (newItem){
+        onChanged: (newItem) {
           setState(() {
             selectedmenuItem = newItem!;
           });
