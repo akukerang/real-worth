@@ -6,6 +6,7 @@ import 'login_forms/logCheck.dart';
 import "login_forms/login_page1.dart";
 import "salary_page/salary.dart";
 import "login_forms/temp.dart";
+import "salary_page/test.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AuthCheck(),
+      home: SalaryPage(),
     );
   }
 }

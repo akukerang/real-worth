@@ -1,34 +1,27 @@
 import 'package:flutter/material.dart';
 import 'JobContainer.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'Scatter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'getData.dart';
+import 'addData.dart';
 
 class SalaryPage extends StatelessWidget {
+  String current =
+      FirebaseAuth.instance.currentUser!.uid; //Gets current users ID
+
   @override
   Widget build(BuildContext context) {
+    // addUser("white", "male", "none", "ha1kPTDW8RMwXf95JmRt", "Google",
+    //     "Software Engineer", 70000, 10);
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            RichText(
-              text: const TextSpan(
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 30,
-                  fontWeight: FontWeight.w300,
-                ),
-                children: [
-                  TextSpan(
-                      text: "JOB_NAME ",
-                      style: TextStyle(fontWeight: FontWeight.w400)),
-                  TextSpan(text: "Salaries at\n"),
-                  TextSpan(
-                      text: "COMPANY_NAME",
-                      style: TextStyle(fontWeight: FontWeight.w400))
-                ],
-              ),
-            ),
+            Container(
+                margin: EdgeInsets.only(
+                    top: 25.0, left: 10.0, right: 10.0, bottom: 10.0),
+                child: getJobInfo(current)),
             Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: SizedBox(height: 250.0, child: Scatterplot())),
