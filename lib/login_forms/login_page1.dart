@@ -19,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   //sign user in
+  void signUserIn() {}
   void signUserIn() async {
     showDialog(
         context: context,
@@ -90,7 +91,41 @@ class _LoginPageState extends State<LoginPage> {
                 onTap: signUserIn,
               ),
 
+              const SizedBox(height: 40),
+
+              //or continue with
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(thickness: 1.0, color: Colors.grey[400]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'OR',
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(thickness: 1.0, color: Colors.grey[400]),
+                    )
+                  ],
+                ),
+              ),
+
               const SizedBox(height: 20),
+
+              //google or email
+              const RectTile(
+                imagePath: 'lib/images/google.png',
+                imgDis: 'Continue with Google',
+              ),
+
+              const SizedBox(height: 50),
 
               //or continue with
 
