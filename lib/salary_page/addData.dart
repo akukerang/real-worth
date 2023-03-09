@@ -1,25 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-Future<void> addUser(
-    String race,
-    String gender,
-    String education,
-    String company_id,
-    String company_name,
-    String job_title,
-    int salary,
-    int years) async {
+Future<void> addUser() async {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   users.add({
-    'race': race,
-    'gender': gender,
-    'education': education,
+    'race': "test",
+    'gender': "test",
+    'education': "test",
     'job': {
-      'company_id': company_id,
-      'company_name': company_name,
-      'job_title': job_title,
-      'salary': salary,
-      'years': years
+      'company_id': "test",
+      'company_name': "test",
+      'job_title': "test",
+      'salary': 12,
+      'years': 727,
     }
   });
 }

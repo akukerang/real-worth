@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:real_worth/components/test.dart';
+import 'package:real_worth/login_forms/login_page1.dart';
+import 'package:real_worth/registration/companyList.dart';
 import 'firebase_options.dart';
 import 'login_forms/AuthCheck.dart';
 import 'registration/registration.dart';

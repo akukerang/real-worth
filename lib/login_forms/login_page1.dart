@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
@@ -19,7 +18,6 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   //sign user in
-  void signUserIn() {}
   void signUserIn() async {
     showDialog(
         context: context,
