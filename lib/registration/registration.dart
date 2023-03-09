@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../salary_page/getData.dart';
 import 'companyList.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -19,6 +21,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   String? _education;
   String? _race;
 
+  late bool emailExist;
+  bool weakPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +53,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your email';
+                } else if (emailExist) {
+                  return 'This account already exists';
                 }
                 return null;
               },
@@ -76,6 +82,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your password';
+                } else if (weakPassword) {
+                  return 'Please choose a stronger password';
                 }
                 return null;
               },
@@ -189,9 +197,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
             const SizedBox(height: 32.0),
             ElevatedButton(
               child: const Text('Next'),
-              onPressed: () {
+              onPressed: () async {
+                emailExist = await checkEmailExist(_emailController.text);
+                if (_passwordController.text.length < 6) {
+                  weakPassword = true;
+                } else {
+                  weakPassword = false;
+                }
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
