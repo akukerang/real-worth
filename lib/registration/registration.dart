@@ -1,9 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:real_worth/salary_page/addData.dart';
-
 import 'companyList.dart';
-import 'jobForm.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});

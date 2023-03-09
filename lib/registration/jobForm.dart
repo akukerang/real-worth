@@ -139,45 +139,23 @@ class _JobPageState extends State<JobPage> {
                       .createUserWithEmailAndPassword(
                           email: widget.email, password: widget.password);
                   final String UID = userCredential.user!.uid;
-                  FirebaseFirestore.instance
-                      .collection('users')
-                      .doc(UID)
-                      .set({
-                        'education': widget.education,
-                        'gender': widget.gender,
-                        'job': {
-                          'company_id': widget.companyID,
-                          'company_name': widget.companyName,
-                          'job_title': _jobName!,
-                          'salary': _salary!,
-                          'years': _years!,
-                        },
-                        'race': widget.race,
-                      })
-                      .then((value) => print('ADDED'))
-                      .catchError((error) => print('error $error'));
-                  FirebaseFirestore.instance
-                      .collection('users')
-                      .add({
-                        'education': widget.education,
-                        'gender': widget.gender,
-                        'job': {
-                          'company_id': widget.companyID,
-                          'company_name': widget.companyName,
-                          'job_title': _jobName!,
-                          'salary': _salary!,
-                          'years': _years!,
-                        },
-                        'race': widget.race,
-                      })
-                      .then((value) => print('test'))
-                      .catchError((error) => print('error $error'));
-                  // Navigator.pop(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => LoginPage(),
-                  //   ),
-                  // );
+                  FirebaseFirestore.instance.collection('users').doc(UID).set({
+                    'education': widget.education,
+                    'gender': widget.gender,
+                    'job': {
+                      'company_id': widget.companyID,
+                      'company_name': widget.companyName,
+                      'job_title': _jobName!,
+                      'salary': int.parse(_salary!),
+                      'years': int.parse(_years!),
+                    },
+                    'race': widget.race,
+                  });
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AuthCheck(),
+                      ));
                 }
               },
             ),
