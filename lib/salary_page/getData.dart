@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -47,4 +48,24 @@ Future<String> getCompanyID(String docID) async {
   final snap =
       await FirebaseFirestore.instance.collection('users').doc(docID).get();
   return snap.get('job.company_id');
+}
+
+Future<bool> checkEmailExist(String email) async {
+  List<String> temp =
+      await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+  if (temp.isEmpty) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+Future<bool> checkCompanyExist(String name, String address) async {
+  CollectionReference companies =
+      FirebaseFirestore.instance.collection('company');
+  QuerySnapshot snap = await companies
+      .where('name', isEqualTo: name)
+      .where('address', isEqualTo: address)
+      .get();
+  return snap.docs.isNotEmpty; //if isn't empty, company already exists.
 }

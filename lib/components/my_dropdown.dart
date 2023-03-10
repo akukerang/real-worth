@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class MyDropdown extends StatefulWidget {
   final List<String> menuItems;
+  final String label;
   const MyDropdown({
     Key? key,
     required this.menuItems,
+    required this.label,
   }) : super(key: key);
   @override
   State<MyDropdown> createState() => _MyDropdownState();
@@ -22,9 +24,14 @@ class _MyDropdownState extends State<MyDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: DropdownButton(
-        hint: const Text('Select Fruit'),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 12),
+      child: DropdownButtonFormField(
+        focusColor: Colors.white,
+        decoration: InputDecoration(
+          labelText: widget.label,
+          hintText: 'Select your ${widget.label}',
+        ),
         onChanged: (newItem) {
           setState(() {
             selectedmenuItem = newItem!;
