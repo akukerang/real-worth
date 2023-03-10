@@ -59,3 +59,13 @@ Future<bool> checkEmailExist(String email) async {
     return true;
   }
 }
+
+Future<bool> checkCompanyExist(String name, String address) async {
+  CollectionReference companies =
+      FirebaseFirestore.instance.collection('company');
+  QuerySnapshot snap = await companies
+      .where('name', isEqualTo: name)
+      .where('address', isEqualTo: address)
+      .get();
+  return snap.docs.isNotEmpty; //if isn't empty, company already exists.
+}

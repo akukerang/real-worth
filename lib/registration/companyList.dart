@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:real_worth/registration/jobForm.dart';
+import 'package:real_worth/registration/registerCompany.dart';
 
 class CompanyList extends StatefulWidget {
   final String email;
@@ -167,7 +168,14 @@ class _CompanyListState extends State<CompanyList> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addNewCompany,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RegisterCompany(),
+            ),
+          );
+        },
         child: const Icon(Icons.add),
       ),
     );

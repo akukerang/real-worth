@@ -1,8 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:real_worth/registration/registration.dart';
 import '../components/my_button.dart';
-import '../components/my_textfield.dart';
 import '../components/rect_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

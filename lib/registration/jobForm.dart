@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:real_worth/login_forms/AuthCheck.dart';
-import '../login_forms/login_page1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class JobPage extends StatefulWidget {
@@ -66,18 +66,22 @@ class _JobPageState extends State<JobPage> {
                 hintStyle: TextStyle(color: Colors.grey[500]),
               ),
               validator: (value) {
-                if (value!.isEmpty) {
+                if (value!.trim().isEmpty) {
                   return 'Please enter your job name';
                 }
                 return null;
               },
               onSaved: (value) {
-                _jobName = value;
+                _jobName = value!.trim();
               },
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: _salaryController,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -103,6 +107,10 @@ class _JobPageState extends State<JobPage> {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
               controller: _yearsController,
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../salary_page/getData.dart';
 import 'companyList.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -51,7 +50,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 hintStyle: TextStyle(color: Colors.grey[500]),
               ),
               validator: (value) {
-                if (value!.isEmpty) {
+                if (value!.trim().isEmpty) {
                   return 'Please enter your email';
                 } else if (emailExist) {
                   return 'This account already exists';
@@ -59,7 +58,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 return null;
               },
               onSaved: (value) {
-                _email = value;
+                _email = value!.trim();
               },
             ),
             const SizedBox(height: 16.0),
