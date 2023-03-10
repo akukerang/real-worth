@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'salary_page/salary.dart';
 import 'salary_page/getData.dart';
+import 'profile/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,11 +35,8 @@ class HomePageState extends State<HomePage> {
           current: current,
           company: companyID,
         );
-        _widgetOptions[1] = SalaryPage(
-          category: _categoryOptions[_categoryIndex],
-          current: current,
-          company: companyID,
-        );
+        _widgetOptions[1] =
+            ProfilePage(current: current, currCompID: companyID);
       });
     });
   }

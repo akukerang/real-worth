@@ -59,11 +59,6 @@ class _CompanyListState extends State<CompanyList> {
     });
   }
 
-  void _addNewCompany() {
-    // Logic for adding a new company
-    print('Add new company');
-  }
-
   void _submitSelection() {
     if (_selectedCompany != null) {
       Navigator.push(
