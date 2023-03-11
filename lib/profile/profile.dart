@@ -51,103 +51,106 @@ class _ProfilePageState extends State<ProfilePage> {
               title: const Text('Your Profile'),
             ),
             body: SingleChildScrollView(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     'Gender',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  SizedBox(height: 8.0),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
                   Text(
                     '${user['gender']}',
-                    style: TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 24.0),
-                  Text(
+                  const SizedBox(height: 24.0),
+                  const Text(
                     'Education',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  SizedBox(height: 8.0),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
                   Text(
                     '${user['education']}',
-                    style: TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 24.0),
-                  Text(
+                  const SizedBox(height: 24.0),
+                  const Text(
                     'Race',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  SizedBox(height: 8.0),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
                   Text(
                     '${user['race']}',
-                    style: TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 24.0),
-                  Text(
+                  const SizedBox(height: 24.0),
+                  const Text(
                     'Location',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  SizedBox(height: 8.0),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
                   Text(
                     '${company['address']}',
-                    style: TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 24.0),
-                  Text(
+                  const SizedBox(height: 24.0),
+                  const Text(
                     'Job',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  SizedBox(height: 8.0),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
                   Text(
                     '${user['job']['job_title']}',
-                    style: TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 24.0),
-                  Text(
+                  const SizedBox(height: 24.0),
+                  const Text(
                     'Company',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  SizedBox(height: 8.0),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
                   Text(
                     '${company['name']}',
-                    style: TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 24.0),
-                  Text(
+                  const SizedBox(height: 24.0),
+                  const Text(
                     'Salary',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  Divider(),
-                  SizedBox(height: 8.0),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
                   Text(
                     '${user['job']['salary']}',
-                    style: TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 24.0),
+                  const SizedBox(height: 24.0),
                   Center(
                     child: ElevatedButton(
-                      child: Text('Edit Profile'),
+                      child: const Text('Edit Profile'),
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    EditProfilePage())); //this should pass current data
+                                builder: (context) => EditProfilePage(
+                                      current: widget.current,
+                                      compID: widget.currCompID,
+                                      compName: company['name'],
+                                    ))); //this should pass current data
                       },
                     ),
                   ),
