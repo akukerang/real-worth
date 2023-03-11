@@ -49,6 +49,18 @@ class _ProfilePageState extends State<ProfilePage> {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Your Profile'),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.settings),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                SettingsPage(current: widget.current)));
+                  },
+                ),
+              ],
             ),
             body: SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
