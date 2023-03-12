@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:real_worth/profile/changeEmail.dart';
 
 import 'changeCompany.dart';
+import 'changePassword.dart';
 
 class SettingsPage extends StatelessWidget {
   final String current;
@@ -10,12 +12,12 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: ListView(
         children: [
           ListTile(
-            title: Text('Change Company'),
+            title: const Text('Change Company'),
             onTap: () {
               Navigator.push(
                   context,
@@ -25,68 +27,25 @@ class SettingsPage extends StatelessWidget {
                           )));
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            title: Text('Change Password'),
+            title: const Text('Change Password'),
             onTap: () {
-              // Add Change Password
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const changePassword()));
             },
           ),
+          const Divider(),
           ListTile(
-            title: Text('Change Email'),
+            title: const Text('Change Email'),
             onTap: () {
-              // Add Change Email
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const changeEmail()));
             },
           ),
-          Divider(),
-          ListTile(
-            title: Text('Help'),
-            subtitle: Text('Need help? Contact us'),
-          ),
-          Divider(),
-          ListTile(
-            title: Text('Contact Us'),
-            onTap: () {
-              // Add later
-            },
-          ),
-          ListTile(
-            title: Text('Report a Bug'),
-            onTap: () {
-              // Add later
-            },
-          ),
-          ListTile(
-            title: Text('Request a Feature'),
-            onTap: () {
-              // Add later
-            },
-          ),
-          Divider(),
-          ListTile(
-            title: Text('Notifications'),
-            subtitle: Text('Control notification settings'),
-          ),
-          SwitchListTile(
-            title: Text('Push Notifications'),
-            onChanged: (value) {
-              // Idk how you'd make this work but make it happen
-            },
-            value: true,
-          ),
-          Divider(),
-          ListTile(
-            title: Text('Delete Account'),
-            onTap: () {
-              // Add Delete Account
-            },
-          ),
-          ListTile(
-            title: Text('Sign Out'),
-            onTap: () {
-              // Add Sign Out
-            },
-          ),
+          const Divider(),
         ],
       ),
     );

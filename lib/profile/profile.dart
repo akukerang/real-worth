@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'editprofile.dart';
 import 'settings.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -51,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
               title: const Text('Your Profile'),
               actions: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.settings),
+                  icon: const Icon(Icons.settings),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -60,6 +59,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                 SettingsPage(current: widget.current)));
                   },
                 ),
+                IconButton(
+                  icon: const Icon(Icons.refresh),
+                  onPressed: () {
+                    setState(() {});
+                  },
+                )
               ],
             ),
             body: SingleChildScrollView(
@@ -104,18 +109,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   const SizedBox(height: 24.0),
                   const Text(
-                    'Location',
-                    style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                  ),
-                  const Divider(),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    '${company['address']}',
-                    style: const TextStyle(fontSize: 18.0),
-                  ),
-                  const SizedBox(height: 24.0),
-                  const Text(
                     'Job',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
@@ -124,6 +117,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 8.0),
                   Text(
                     '${user['job']['job_title']}',
+                    style: const TextStyle(fontSize: 18.0),
+                  ),
+                  const SizedBox(height: 24.0),
+                  const Text(
+                    'Salary',
+                    style:
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  ),
+                  const Divider(),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    '${user['job']['salary']}',
                     style: const TextStyle(fontSize: 18.0),
                   ),
                   const SizedBox(height: 24.0),
@@ -140,14 +145,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   const SizedBox(height: 24.0),
                   const Text(
-                    'Salary',
+                    'Location',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
                   Text(
-                    '${user['job']['salary']}',
+                    '${company['address']}',
                     style: const TextStyle(fontSize: 18.0),
                   ),
                   const SizedBox(height: 24.0),

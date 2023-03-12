@@ -20,8 +20,19 @@ class SalaryPage extends StatefulWidget {
 class _SalaryPageState extends State<SalaryPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Salary Page'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              setState(() {});
+            },
+          )
+        ],
+      ),
+      body: Column(
         children: [
           Container(
               margin: const EdgeInsets.only(

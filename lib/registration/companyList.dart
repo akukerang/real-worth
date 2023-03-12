@@ -76,6 +76,7 @@ class _CompanyListState extends State<CompanyList> {
           ),
         ),
       );
+      // ignore: use_build_context_synchronously
     }
   }
 

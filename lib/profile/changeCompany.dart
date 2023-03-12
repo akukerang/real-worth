@@ -75,6 +75,20 @@ class _EditCompanyState extends State<EditCompany> {
         },
         'race': _currentUser!['race'],
       });
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: const Text("Company Changed"),
+                content:
+                    const Text("Your company has been successfully changed"),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Close"))
+                ],
+              ));
     }
     _currentUserData();
   }

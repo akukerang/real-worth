@@ -219,6 +219,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 },
                                 'race': _race,
                               });
+                              // ignore: use_build_context_synchronously
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                        title: const Text("Profile Changed"),
+                                        content: const Text(
+                                            "Your profile has been successfully edited"),
+                                        actions: [
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text("Close"))
+                                        ],
+                                      ));
                             }
                           },
                           child: const Text("Save"),
