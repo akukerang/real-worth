@@ -18,7 +18,7 @@ class JobContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.0),
@@ -27,7 +27,7 @@ class JobContainer extends StatelessWidget {
             color: Colors.grey.withOpacity(.8),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -36,30 +36,30 @@ class JobContainer extends StatelessWidget {
         children: [
           Text(
             company,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 4.0),
+          const SizedBox(height: 4.0),
           Text(
             position,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16.0,
             ),
           ),
-          SizedBox(height: 4.0),
+          const SizedBox(height: 4.0),
           Row(
             children: [
-              Icon(Icons.location_on),
-              SizedBox(width: 8.0),
+              const Icon(Icons.location_on),
+              const SizedBox(width: 8.0),
               Text(location),
             ],
           ),
-          SizedBox(height: 4.0),
+          const SizedBox(height: 4.0),
           Text(
             salary,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.bold,
             ),
