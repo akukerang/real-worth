@@ -1,9 +1,7 @@
 import "package:flutter/material.dart";
-import "package:real_worth/registration/companyList.dart";
-import "package:real_worth/registration/jobForm.dart";
-
 import "../components/my_button.dart";
 import "../components/my_dropdown.dart";
+import "job_info_page.dart";
 
 class InformationPage extends StatefulWidget {
   final String email;
@@ -35,8 +33,8 @@ class _InformationPageState extends State<InformationPage> {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: ListView(
-                padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
             
                   //your Information title
@@ -106,13 +104,13 @@ class _InformationPageState extends State<InformationPage> {
 
               MyButton(
                     buttonText: 'Next',
-                    onPressed: () async {
+                    onTap: () async {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CompanyList(
+                      builder: (context) => JobInfoPage(
                         gender: _gender!,
                         education: _education!,
                         race: _race!,

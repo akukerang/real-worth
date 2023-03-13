@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  
-  final void Function()? onPressed;
+
+  final Function()? onTap;
   final String buttonText;
   const MyButton(
     {super.key,
-    required this.onPressed,
+    required this.onTap,
     required this.buttonText
   }
   );
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () { 
-              onPressed!();
-            },
+    return GestureDetector(
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
@@ -36,6 +34,21 @@ class MyButton extends StatelessWidget {
         ),
       ),
     );
-    
+
+  }
+}
+
+//elevated
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

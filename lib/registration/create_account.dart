@@ -20,9 +20,6 @@ class _CreateAccountState extends State<CreateAccount> {
 
   String? _email;
   String? _password;
-  String? _gender;
-  String? _education;
-  String? _race;
 
   late bool emailExist;
   bool weakPassword = false;
@@ -35,28 +32,6 @@ class _CreateAccountState extends State<CreateAccount> {
       return false;
     }
   }
-
-  // void createAccount() async {
-  // emailExist = await checkEmailExist(emailController.text);
-  // if (passwordController.text.length < 6) {
-  //   weakPassword = true;
-  // } else {
-  //   weakPassword = false;
-  // }
-  // if (_formKey.currentState!.validate()) {
-  //   _formKey.currentState!.save();
-
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => (
-  //         email: _email!,
-  //         password: _password!,
-  //     ),
-  //     ),
-  //   );
-  // }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +70,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   } else if (emailExist) {
                     return 'This account already exists';
                   }
-                    return null;
+                  return null;
                   },
                   onSaved: (value) {
                     _email = value!.trim();
@@ -134,9 +109,11 @@ class _CreateAccountState extends State<CreateAccount> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please confirm password';
-                   } else if (!passwordsMatch(value)) {
-                      _password = null;
-                      return 'Passwords do not match';
+                   } else if (weakPassword) {
+                      return 'Please choose a stronger password';  
+                      //(!passwordsMatch(value)) {
+                     // _password = null;
+                     // return 'Passwords do not match';
                     }
                     return null;
                   },
@@ -150,7 +127,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   //create account button
                   MyButton(
                     buttonText: 'Create Account',
-                    onPressed: () async {
+                    onTap: () async {
                 emailExist = await checkEmailExist(emailController.text);
                 if (passwordController.text.length < 6) {
                   weakPassword = true;

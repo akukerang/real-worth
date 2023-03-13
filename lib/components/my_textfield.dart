@@ -19,7 +19,7 @@ class MyTextField extends StatelessWidget {
     required this.controller,
     required this.hintText,
     this.obscureText = false,
-    required this.labelText,
+    this.labelText = '',
     this. keyboardType = TextInputType.text,
     this.errorText,
     required this.onSaved,

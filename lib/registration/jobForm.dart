@@ -51,8 +51,10 @@ class _JobPageState extends State<JobPage> {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: ListView(
-                padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //shrinkWrap: true,
+                //padding: const EdgeInsets.all(20.0),
                 children: [
                   
                   Padding(
@@ -132,7 +134,7 @@ class _JobPageState extends State<JobPage> {
                   
                   MyButton(
                     buttonText: 'Next',
-                    onPressed: () async {
+                    onTap: () async {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                 

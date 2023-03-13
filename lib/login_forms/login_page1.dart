@@ -55,11 +55,12 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: Column(
+              child: Column( 
+                //shrinkWrap: true,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
-
+      
                   Text(
                     'Welcome!',
                     style: TextStyle(
@@ -128,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   //sign in button
                   MyButton(
-                    onPressed: signUserIn,
+                    onTap: signUserIn,
                     buttonText: "Sign In"
                   ),
 
