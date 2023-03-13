@@ -51,6 +51,7 @@ class MyTextField extends StatelessWidget {
         ),
         validator: (value) {
           validator(value);
+          return null;
         },
         onSaved: (value) {
           onSaved(value);

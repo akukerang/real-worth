@@ -96,7 +96,7 @@ class _JobInfoPageState extends State<JobInfoPage> {
                     validator: (value) {
                         if (value!.isEmpty) {
                           return 'Please enter the Company ID';
-                       }
+                        }
                         return null;
                       },
                     onSaved: (value) { 
