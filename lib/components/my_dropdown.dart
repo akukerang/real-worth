@@ -4,16 +4,17 @@ class MyDropdown extends StatefulWidget {
   final List<String>? menuItems;
   final String? value;
   final String hint;
-  String? personInfo;
-  final String? validatorReturn;
+  final void Function(Object?)? onChanged;
+  final String? Function(Object?) validator;
 
-   MyDropdown({
+
+  const MyDropdown({
     Key? key,
     required this.menuItems,
     required this.value,
     required this.hint,
-    required this.validatorReturn,
-    required this.personInfo
+    required this.validator,
+    required this.onChanged,
   }) : super(key: key);
   @override
   State<MyDropdown> createState() => _MyDropdownState();
@@ -45,7 +46,7 @@ class _MyDropdownState extends State<MyDropdown> {
           filled: true,
           hintStyle: TextStyle(color: Colors.grey[500]),
           ),
-        value: widget.personInfo,
+        value: widget.value,
         items: widget.menuItems?.map((item) {
           return DropdownMenuItem(
             value: item,
@@ -54,16 +55,12 @@ class _MyDropdownState extends State<MyDropdown> {
           }).toList(),
         hint: Text(widget.hint),
         onChanged: (value) {
-          setState(() {
-            widget.personInfo = value.toString(); // check later
-          });
-        },
+          widget.onChanged!(value); // check later
+          },
         validator: (value) {
-          if (value == null) {
-            return widget.validatorReturn;
-          }
+          widget.validator(value);
           return null;
-        },
+          },
          //check later
       ),
     );

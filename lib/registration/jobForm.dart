@@ -75,8 +75,8 @@ class _JobPageState extends State<JobPage> {
 
                   MyTextField(
                     controller: _jobNameController,
-                    labelText: 'Job Name',
-                    hintText: 'Enter your job name',
+                    labelText: 'Job Title',
+                    hintText: 'Enter your job title',
                     validator: (value) {
                       if (value!.trim().isEmpty) {
                         return 'Please enter your job name';

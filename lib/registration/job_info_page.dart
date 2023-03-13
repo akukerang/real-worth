@@ -69,10 +69,11 @@ class _JobInfoPageState extends State<JobInfoPage> {
                     ],),
                   ),
                   
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 40),
             
                   //company name
                   MyTextField(
+                    labelText: 'Company',
                     controller: companyNameController,
                     hintText:'Company Name', 
                     obscureText: false,
@@ -87,10 +88,11 @@ class _JobInfoPageState extends State<JobInfoPage> {
                     },
                   ),
             
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
             
                   //address
                   MyTextField(
+                    labelText: 'Company ID',
                     controller: companyIDController,
                     hintText:'Company ID', 
                     validator: (value) {
@@ -104,9 +106,10 @@ class _JobInfoPageState extends State<JobInfoPage> {
                     }
                     ),
                   
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
             
                   MyTextField(
+                    labelText: 'City',
                     controller: cityController,
                     hintText: 'City', 
                     validator: (value) {
@@ -120,9 +123,10 @@ class _JobInfoPageState extends State<JobInfoPage> {
                     }
                   ),
             
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
             
                   MyTextField(
+                    labelText: 'State',
                     controller: stateController, 
                     hintText: 'State', 
                     obscureText: false,
@@ -137,21 +141,9 @@ class _JobInfoPageState extends State<JobInfoPage> {
                     },
                   ),
 
-                  MyTextField(
-                    controller: salaryController, 
-                    hintText: 'Salary', 
-                    obscureText: false,
-                    validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter salary';
-                       }
-                        return null;
-                      },
-                    onSaved: (value) {
-                      _salary = value!.trim();
-                    },
-                  ),
+                  const SizedBox(height: 30),
 
+                  
                   MyButton(
                     buttonText: 'Next',
                     onTap: () async {

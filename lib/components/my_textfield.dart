@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class MyTextField extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final controller; //access textfield contents
+  final TextEditingController? controller; //access textfield contents
   final String hintText; //place holder
   final bool obscureText; //hide characters when typing password
   final String labelText;

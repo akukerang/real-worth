@@ -65,9 +65,18 @@ class _InformationPageState extends State<InformationPage> {
                     ], 
                     value: _race,
                     hint: 'Select a Race',
-                    validatorReturn: 'Please select a race',
-                    personInfo: _race
-                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        _race = value.toString();
+                      });
+                    },
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Please select a race';
+                      }
+                     // return null;
+                    }
+                  ),
                     
                    const SizedBox(height: 40),
                    
@@ -79,9 +88,18 @@ class _InformationPageState extends State<InformationPage> {
                       'Other'], 
                     value: _gender,
                     hint: 'Select Gender',
-                    validatorReturn: 'Please select a gender',
-                    personInfo: _gender
-                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        _gender = value.toString();
+                      });
+                    },
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Please select a gender';
+                      }
+                      return null;
+                    }
+                  ),
                   
                   const SizedBox(height: 40),
                     
@@ -96,9 +114,18 @@ class _InformationPageState extends State<InformationPage> {
                       'PHD'],
                     value: _education,
                     hint: 'Select Education Level',
-                    validatorReturn: 'Please select a education level',
-                    personInfo: _education
-              ),
+                    onChanged: (value) {
+                      setState(() {
+                       _education = value.toString();
+                      });
+                    },
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Please select a education level';
+                      }
+                      return null;
+                    },
+                  ),
             
                const SizedBox(height: 60),
 
