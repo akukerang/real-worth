@@ -1,37 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:real_worth/registration/jobForm.dart';
 import 'package:real_worth/registration/registerCompany.dart';
 
-class CompanyList extends StatefulWidget {
-  final String email;
-  final String password;
-  final String gender;
-  final String education;
-  final String race;
-
-  const CompanyList({
-    Key? key,
-    required this.email,
-    required this.password,
-    required this.gender,
-    required this.education,
-    required this.race,
-  }) : super(key: key);
+class EditCompany extends StatefulWidget {
+  final String current;
+  const EditCompany({super.key, required this.current});
 
   @override
-  _CompanyListState createState() => _CompanyListState();
+  _EditCompanyState createState() => _EditCompanyState();
 }
 
-class _CompanyListState extends State<CompanyList> {
+class _EditCompanyState extends State<EditCompany> {
   TextEditingController _searchController = TextEditingController();
   List<DocumentSnapshot> _companyList = [];
   DocumentSnapshot? _selectedCompany;
+  DocumentSnapshot? _currentUser;
 
   @override
   void initState() {
     super.initState();
     _searchController.addListener(_searchCompanies);
+    _currentUserData();
   }
 
   void _searchCompanies() async {
@@ -53,6 +42,19 @@ class _CompanyListState extends State<CompanyList> {
     });
   }
 
+  void _currentUserData() async {
+    DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(widget.current)
+        .get();
+
+    setState(
+      () {
+        _currentUser = documentSnapshot;
+      },
+    );
+  }
+
   void _selectCompany(DocumentSnapshot company) {
     setState(() {
       _selectedCompany = company;
@@ -61,23 +63,34 @@ class _CompanyListState extends State<CompanyList> {
 
   void _submitSelection() {
     if (_selectedCompany != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => JobPage(
-            email: widget.email,
-            password: widget.password,
-            gender: widget.gender,
-            education: widget.education,
-            race: widget.race,
-            companyID: _selectedCompany!.id,
-            companyName: _selectedCompany!['name'],
-            companyAddr: _selectedCompany!['address'],
-          ),
-        ),
-      );
-      // ignore: use_build_context_synchronously
+      FirebaseFirestore.instance.collection('users').doc(widget.current).set({
+        'education': _currentUser!['education'],
+        'gender': _currentUser!['gender'],
+        'job': {
+          'company_id': _selectedCompany!.id,
+          'company_name': _selectedCompany!['name'],
+          'job_title': _currentUser!['job']['job_title'],
+          'salary': _currentUser!['job']['salary'],
+          'years': _currentUser!['job']['years'],
+        },
+        'race': _currentUser!['race'],
+      });
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: const Text("Company Changed"),
+                content:
+                    const Text("Your company has been successfully changed"),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Close"))
+                ],
+              ));
     }
+    _currentUserData();
   }
 
   @override
