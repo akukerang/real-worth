@@ -55,17 +55,20 @@ class _changePasswordState extends State<changePassword> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 16.0),
-                const Text(
-                  "Enter current password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                  ),
-                ),
                 TextFormField(
                   obscureText: true,
                   controller: _currentPasswordController,
                   decoration: InputDecoration(
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                      ),
+                      fillColor: Colors.grey.shade200,
+                      filled: true,
+                      labelText: "Current Password",
+                      hintStyle: TextStyle(color: Colors.grey[500]),
                       errorText: _correctPassword ? null : "Wrong Password"),
                   onSaved: (value) {
                     setState(() {
@@ -79,13 +82,6 @@ class _changePasswordState extends State<changePassword> {
                   },
                 ),
                 const SizedBox(height: 16.0),
-                const Text(
-                  "Enter new password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                  ),
-                ),
                 TextFormField(
                   obscureText: true,
                   controller: _newPasswordController,
@@ -94,6 +90,18 @@ class _changePasswordState extends State<changePassword> {
                       _newPassword = value!.trim();
                     });
                   },
+                  decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    labelText: "New Password",
+                    hintStyle: TextStyle(color: Colors.grey[500]),
+                  ),
                   validator: (value) {
                     if (value!.trim().isEmpty) {
                       return "Please enter a value";
@@ -104,15 +112,21 @@ class _changePasswordState extends State<changePassword> {
                   },
                 ),
                 const SizedBox(height: 16.0),
-                const Text(
-                  "Enter new password again",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                  ),
-                ),
                 TextFormField(
                   controller: _newPassword2Controller,
+                  decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    labelText: "Confirm Password",
+                    hintText: "Confirm Password",
+                    hintStyle: TextStyle(color: Colors.grey[500]),
+                  ),
                   obscureText: true,
                   onSaved: (value) {
                     setState(() {

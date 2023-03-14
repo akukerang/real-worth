@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../components/my_button.dart';
+
 class EditProfilePage extends StatefulWidget {
   final String current;
   final String compName;
@@ -74,55 +76,91 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const SizedBox(height: 16.0),
-                        const Text(
-                          "Job Title",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                          ),
-                        ),
                         TextFormField(
                           initialValue: _jobTitle,
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            labelText: "Job Title",
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                          ),
+                          validator: (value) {
+                            if (value!.trim().isEmpty) {
+                              return "Please enter a job title";
+                            }
+                            return null;
+                          },
                           onSaved: (value) {
                             setState(() {
-                              _jobTitle = value;
+                              _jobTitle = value!.trim();
                             });
                           },
                         ),
                         const SizedBox(height: 16.0),
-                        const Text(
-                          "Salary",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                          ),
-                        ),
                         TextFormField(
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            labelText: "Salary",
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                          ),
                           initialValue: _salary,
                           onSaved: (value) {
                             setState(() {
-                              _salary = value;
+                              _salary = value!;
                             });
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter your salary";
+                            }
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
-                        const Text(
-                          "Years Worked",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                          ),
-                        ),
                         TextFormField(
                           initialValue: _years,
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            labelText: "Years Worked",
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                          ),
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please enter the number of years worked";
+                            }
+                            return null;
+                          },
                           onSaved: (value) {
                             setState(() {
                               _years = value;
@@ -133,13 +171,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         const Text(
                           "Race",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             fontSize: 16.0,
                           ),
                         ),
                         const SizedBox(height: 8.0),
                         DropdownButtonFormField(
                             value: _race,
+                            decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400),
+                              ),
+                              fillColor: Colors.grey.shade200,
+                              filled: true,
+                              hintStyle: TextStyle(color: Colors.grey[500]),
+                            ),
                             items: _raceOptions.map((race) {
                               return DropdownMenuItem(
                                 value: race,
@@ -156,12 +206,24 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         const Text(
                           "Gender",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             fontSize: 16.0,
                           ),
                         ),
                         const SizedBox(height: 8.0),
                         DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400),
+                              ),
+                              fillColor: Colors.grey.shade200,
+                              filled: true,
+                              hintStyle: TextStyle(color: Colors.grey[500]),
+                            ),
                             value: _gender,
                             items: _genderOptions.map((gender) {
                               return DropdownMenuItem(
@@ -179,12 +241,24 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         const Text(
                           "Education Level",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             fontSize: 16.0,
                           ),
                         ),
                         const SizedBox(height: 8.0),
                         DropdownButtonFormField(
+                          decoration: InputDecoration(
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey.shade400),
+                            ),
+                            fillColor: Colors.grey.shade200,
+                            filled: true,
+                            hintStyle: TextStyle(color: Colors.grey[500]),
+                          ),
                           value: _education,
                           items: _educationOptions.map((education) {
                             return DropdownMenuItem(
@@ -200,8 +274,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           onChanged: (value) {},
                         ),
                         const SizedBox(height: 32.0),
-                        ElevatedButton(
-                          onPressed: () async {
+                        MyButton(
+                          onTap: () async {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               FirebaseFirestore.instance
@@ -236,7 +310,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                       ));
                             }
                           },
-                          child: const Text("Save"),
                         ),
                       ],
                     ),

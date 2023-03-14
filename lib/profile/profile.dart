@@ -158,6 +158,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 24.0),
                   Center(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black),
                       child: const Text('Edit Profile'),
                       onPressed: () {
                         Navigator.push(
