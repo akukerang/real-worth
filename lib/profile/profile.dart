@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../salary_page/getData.dart';
 import 'editprofile.dart';
 import 'settings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,10 +7,9 @@ import '../global/globalStyle.dart';
 
 class ProfilePage extends StatefulWidget {
   final String current;
-  final String currCompID;
+
   ProfilePage({
     required this.current,
-    required this.currCompID,
   });
 
   @override
@@ -23,21 +23,30 @@ class _ProfilePageState extends State<ProfilePage> {
 
   String? jobTitle;
 
-  String? company;
-
   String? salary;
 
   String? race;
 
+  String? companyId;
+
+  Future<void> setCompanyID() async {
+    try {
+      companyId = await getCompanyID(widget.current);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-    CollectionReference company =
+    CollectionReference userCollection =
+        FirebaseFirestore.instance.collection('users');
+    CollectionReference companyCollection =
         FirebaseFirestore.instance.collection('company');
     return FutureBuilder<List<DocumentSnapshot>>(
       future: Future.wait([
-        users.doc(widget.current).get(),
-        company.doc(widget.currCompID).get()
+        userCollection.doc(widget.current).get(),
+        setCompanyID().then((value) => companyCollection.doc(companyId).get())
       ]),
       builder: (BuildContext context,
           AsyncSnapshot<List<DocumentSnapshot>> snapshot) {
@@ -167,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             MaterialPageRoute(
                                 builder: (context) => EditProfilePage(
                                       current: widget.current,
-                                      compID: widget.currCompID,
+                                      compID: companyId!,
                                       compName: company['name'],
                                     ))); //this should pass current data
                       },

@@ -33,10 +33,10 @@ class HomePageState extends State<HomePage> {
         _widgetOptions[0] = SalaryPage(
           category: _categoryOptions[_categoryIndex],
           current: current,
-          company: companyID,
         );
-        _widgetOptions[1] =
-            ProfilePage(current: current, currCompID: companyID);
+        _widgetOptions[1] = ProfilePage(
+          current: current,
+        );
       });
     });
   }
@@ -50,7 +50,6 @@ class HomePageState extends State<HomePage> {
       _widgetOptions[0] = SalaryPage(
         category: _categoryOptions[_categoryIndex],
         current: current,
-        company: companyID,
       );
     });
   }
