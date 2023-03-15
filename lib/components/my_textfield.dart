@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyTextField extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final controller; //access textfield contents
+  final TextEditingController? controller; //access textfield contents
   final String hintText; //place holder
   final bool obscureText; //hide characters when typing password
+  final String labelText;
+  final TextInputType keyboardType;
+  final String? errorText;
+  final List<TextInputFormatter>? inputFormatters;
+
+  final void Function(String?) onSaved;
+  final String? Function(String?) validator;
+
   const MyTextField({
     super.key,
     required this.controller,
     required this.hintText,
-    required this.obscureText,
+    this.obscureText = false,
+    this.labelText = '',
+    this. keyboardType = TextInputType.text,
+    this.errorText,
+    required this.onSaved,
+    required this.validator,
+    this.inputFormatters
   });
 
   @override
@@ -18,8 +32,10 @@ class MyTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
         controller: controller,
+        keyboardType: keyboardType,
         obscureText: obscureText,
         decoration: InputDecoration(
+          errorText: errorText,
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
@@ -28,9 +44,17 @@ class MyTextField extends StatelessWidget {
           ),
           fillColor: Colors.grey.shade200,
           filled: true,
+          labelText: labelText,
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.grey[500]),
         ),
+        validator: (value) {
+          validator(value);
+          return null;
+        },
+        onSaved: (value) {
+          onSaved(value);
+        },
       ),
     );
   }

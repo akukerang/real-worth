@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:real_worth/components/my_button.dart';
 import 'package:real_worth/login_forms/AuthCheck.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../components/my_textfield.dart';
 
 class JobPage extends StatefulWidget {
   final String email;
@@ -44,132 +47,128 @@ class _JobPageState extends State<JobPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Enter your Job Info'),
-      ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(20.0),
-          children: [
-            TextFormField(
-              controller: _jobNameController,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                labelText: 'Job Name',
-                hintText: 'Enter your job name',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
-              validator: (value) {
-                if (value!.trim().isEmpty) {
-                  return 'Please enter your job name';
-                }
-                return null;
-              },
-              onSaved: (value) {
-                _jobName = value!.trim();
-              },
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              keyboardType: TextInputType.number,
-              controller: _salaryController,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                labelText: 'Salary',
-                hintText: 'Enter your salary',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter your salary';
-                }
-                return null;
-              },
-              onSaved: (value) {
-                _salary = value;
-              },
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-              controller: _yearsController,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                labelText: 'Years',
-                hintText: 'Enter your years worked there',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter your years worked';
-                }
-                return null;
-              },
-              onSaved: (value) {
-                _years = value;
-              },
-            ),
-            const SizedBox(height: 32.0),
-            ElevatedButton(
-              child: const Text('Next'),
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //shrinkWrap: true,
+                //padding: const EdgeInsets.all(20.0),
+                children: [
+                  
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                      children: [
+                      Text(
+                        'Job Information',
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                          fontSize: 32,
+                        ),
+                      ),
+                    ],),
+                  ),
+              
+              const SizedBox(height: 50),
 
-                  final UserCredential userCredential = await FirebaseAuth
-                      .instance
-                      .createUserWithEmailAndPassword(
-                          email: widget.email, password: widget.password);
-                  final String UID = userCredential.user!.uid;
-                  FirebaseFirestore.instance.collection('users').doc(UID).set({
-                    'education': widget.education,
-                    'gender': widget.gender,
-                    'job': {
-                      'company_id': widget.companyID,
-                      'company_name': widget.companyName,
-                      'job_title': _jobName!,
-                      'salary': int.parse(_salary!),
-                      'years': int.parse(_years!),
+                  MyTextField(
+                    controller: _jobNameController,
+                    labelText: 'Job Title',
+                    hintText: 'Enter your job title',
+                    validator: (value) {
+                      if (value!.trim().isEmpty) {
+                        return 'Please enter your job name';
+                      }
+                      return null;
                     },
-                    'race': widget.race,
-                  });
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AuthCheck(),
-                      ));
-                }
-              },
+                    onSaved: (value) {
+                      _jobName = value!.trim();
+                    },
+                  ),
+                  
+                  const SizedBox(height: 16.0),
+                  
+                  MyTextField(
+                    keyboardType: TextInputType.number,
+                    controller: _salaryController,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                      labelText: 'Salary',
+                      hintText: 'Enter your salary',
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your salary';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _salary = value;
+                      },
+                  ),
+                  
+                  const SizedBox(height: 16.0),
+                  
+                  MyTextField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                      controller: _yearsController,
+                      labelText: 'Years',
+                      hintText: 'Enter your years worked there',
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your years worked';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _years = value;
+                      },
+                  ),
+                  
+                  const SizedBox(height: 32.0),
+                  
+                  MyButton(
+                    buttonText: 'Next',
+                    onTap: () async {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                
+                        final UserCredential userCredential = await FirebaseAuth
+                            .instance
+                            .createUserWithEmailAndPassword(
+                                email: widget.email, password: widget.password);
+                        final String UID = userCredential.user!.uid;
+                        FirebaseFirestore.instance.collection('users').doc(UID).set({
+                          'education': widget.education,
+                          'gender': widget.gender,
+                          'job': {
+                            'company_id': widget.companyID,
+                            'company_name': widget.companyName,
+                            'job_title': _jobName!,
+                            'salary': int.parse(_salary!),
+                            'years': int.parse(_years!),
+                          },
+                          'race': widget.race,
+                        });
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AuthCheck(),
+                            ));
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );

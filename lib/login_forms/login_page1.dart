@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:real_worth/registration/registration.dart';
+import 'package:real_worth/registration/create_account.dart';
 import '../components/my_button.dart';
 import '../components/rect_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../components/my_textfield.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
@@ -54,11 +55,12 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: Column(
+              child: Column( 
+                //shrinkWrap: true,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
-
+      
                   Text(
                     'Welcome!',
                     style: TextStyle(
@@ -70,70 +72,43 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 25),
 
                   //username textfield
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: TextFormField(
-                      controller: usernameController,
-                      obscureText: false,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your Email';
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        email = newValue;
-                      },
-                      decoration: InputDecoration(
-                        errorText:
-                            loginFail ? 'Wrong email or Wrong password' : null,
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                        fillColor: Colors.grey.shade200,
-                        filled: true,
-                        hintText: "Email",
-                        hintStyle: TextStyle(color: Colors.grey[500]),
-                      ),
+                  MyTextField(
+                    controller: usernameController,
+                    hintText: 'Username',
+                    labelText: 'Enter Username',
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your Email';
+                      }
+                      return null;
+                    },
+                    onSaved: (newValue) {
+                      email = newValue;
+                    },
+                      errorText:
+                          loginFail ? 'Wrong email or Wrong password' : null,
                     ),
-                  ),
 
                   const SizedBox(height: 10),
 
                   //password TextField
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: TextFormField(
-                      controller: passwordController,
-                      obscureText: true,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your Password';
-                        }
-                        return null;
-                      },
-                      onSaved: (newValue) {
-                        password = newValue;
-                      },
-                      decoration: InputDecoration(
-                        errorText:
-                            loginFail ? 'Wrong email or Wrong password' : null,
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                        ),
-                        fillColor: Colors.grey.shade200,
-                        filled: true,
-                        hintText: "Password",
-                        hintStyle: TextStyle(color: Colors.grey[500]),
-                      ),
+                  MyTextField(
+                    controller: passwordController,
+                    obscureText: true,
+                    hintText: 'Enter Password',
+                    labelText: 'Password',
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your Password';
+                      }
+                      return null;
+                    },
+                    onSaved: (newValue) {
+                      password = newValue;
+                    },
+                    errorText:
+                          loginFail ? 'Wrong email or Wrong password' : null,
                     ),
-                  ),
 
                   const SizedBox(height: 10),
 
@@ -155,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                   //sign in button
                   MyButton(
                     onTap: signUserIn,
+                    buttonText: "Sign In"
                   ),
 
                   const SizedBox(height: 40),
@@ -206,11 +182,11 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RegistrationPage(),
+                              builder: (context) => const CreateAccount(),
                             ),
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           'Create an account',
                           style: TextStyle(
                             color: Colors.blue,

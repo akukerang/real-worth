@@ -1,49 +1,67 @@
 import 'package:flutter/material.dart';
 
 class MyDropdown extends StatefulWidget {
-  final List<String> menuItems;
-  final String label;
+  final List<String>? menuItems;
+  final String? value;
+  final String hint;
+  final void Function(Object?)? onChanged;
+  final String? Function(Object?) validator;
+
+
   const MyDropdown({
     Key? key,
     required this.menuItems,
-    required this.label,
+    required this.value,
+    required this.hint,
+    required this.validator,
+    required this.onChanged,
   }) : super(key: key);
   @override
   State<MyDropdown> createState() => _MyDropdownState();
 }
 
 class _MyDropdownState extends State<MyDropdown> {
-  String selectedmenuItem = '';
-  @override
-  void initState() {
-    super.initState();
-    if (widget.menuItems.isNotEmpty) {
-      selectedmenuItem = widget.menuItems.first;
-    }
-  }
+  // String selectedmenuItem = '';
+  //@override
+  // void initState() {
+  //   super.initState();
+  //   if (widget.menuItems.isNotEmpty) {
+  //     selectedmenuItem = widget.menuItems.first;
+  //   }
+  //}
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: DropdownButtonFormField(
-        focusColor: Colors.white,
         decoration: InputDecoration(
-          labelText: widget.label,
-          hintText: 'Select your ${widget.label}',
-        ),
-        onChanged: (newItem) {
-          setState(() {
-            selectedmenuItem = newItem!;
-          });
-        },
-        items: widget.menuItems.map((String item) {
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade400),
+          ),
+          fillColor: Colors.grey.shade200,
+          filled: true,
+          hintStyle: TextStyle(color: Colors.grey[500]),
+          ),
+        value: widget.value,
+        items: widget.menuItems?.map((item) {
           return DropdownMenuItem(
             value: item,
             child: Text(item),
           );
-        }).toList(),
-        value: selectedmenuItem,
+          }).toList(),
+        hint: Text(widget.hint),
+        onChanged: (value) {
+          widget.onChanged!(value); // check later
+          },
+        validator: (value) {
+          widget.validator(value);
+          return null;
+          },
+         //check later
       ),
     );
   }
