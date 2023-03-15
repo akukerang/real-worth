@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:real_worth/components/my_button.dart';
+import '../global/globalStyle.dart';
 
 class changeEmail extends StatefulWidget {
   const changeEmail({Key? key}) : super(key: key);
@@ -50,17 +52,17 @@ class _changeEmailState extends State<changeEmail> {
               children: [
                 const SizedBox(height: 16.0),
                 const Text(
-                  "Enter current password",
+                  "Current Password",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     fontSize: 16.0,
                   ),
                 ),
+                const SizedBox(height: 8.0),
                 TextFormField(
                   obscureText: true,
                   controller: _currentPasswordController,
-                  decoration: InputDecoration(
-                      errorText: _correctPassword ? null : "Wrong Password"),
+                  decoration: componentStyle.textFieldStyle(),
                   onSaved: (value) {
                     setState(() {
                       _currentPassword = value!.trim();
@@ -70,21 +72,24 @@ class _changeEmailState extends State<changeEmail> {
                     if (value!.trim().isEmpty) {
                       return "Please enter a value";
                     }
+                    if (!_correctPassword) {
+                      return "Wrong Password";
+                    }
+                    return null;
                   },
                 ),
                 const SizedBox(height: 16.0),
                 const Text(
-                  "Enter new email",
+                  "Current New Email",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     fontSize: 16.0,
                   ),
                 ),
+                const SizedBox(height: 8.0),
                 TextFormField(
                   controller: _newEmailController,
-                  decoration: InputDecoration(
-                      errorText:
-                          _validEmail ? null : "Please enter a valid email"),
+                  decoration: componentStyle.textFieldStyle(),
                   onSaved: (value) {
                     setState(() {
                       _newEmail = value!.trim();
@@ -94,18 +99,24 @@ class _changeEmailState extends State<changeEmail> {
                     if (value!.trim().isEmpty) {
                       return "Please enter a value";
                     }
+                    if (!_validEmail) {
+                      return "Please enter a valid email";
+                    }
+                    return null;
                   },
                 ),
                 const SizedBox(height: 16.0),
                 const Text(
-                  "Enter again",
+                  "Confirm Email",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     fontSize: 16.0,
                   ),
                 ),
+                const SizedBox(height: 8.0),
                 TextFormField(
                   controller: _newEmail2Controller,
+                  decoration: componentStyle.textFieldStyle(),
                   onSaved: (value) {
                     setState(() {
                       _newEmail = value!.trim();
@@ -122,8 +133,9 @@ class _changeEmailState extends State<changeEmail> {
                   },
                 ),
                 const SizedBox(height: 32.0),
-                ElevatedButton(
-                  onPressed: () async {
+                MyButton(
+                  label: "Save Changes",
+                  onTap: () async {
                     _correctPassword = await checkPassword(
                         _currentPasswordController.text.trim());
                     _validEmail = RegExp(
@@ -145,6 +157,7 @@ class _changeEmailState extends State<changeEmail> {
                                       "Your email has been successfully changed"),
                                   actions: [
                                     ElevatedButton(
+                                        style: componentStyle.elevatedStyle(),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
@@ -154,7 +167,6 @@ class _changeEmailState extends State<changeEmail> {
                       }
                     }
                   },
-                  child: const Text("Save"),
                 ),
               ],
             ),

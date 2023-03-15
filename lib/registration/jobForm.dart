@@ -12,7 +12,8 @@ class JobPage extends StatefulWidget {
   final String race;
   final String companyID;
   final String companyName;
-  final String companyAddr;
+  final String companyCity;
+  final String companyState;
 
   const JobPage({
     super.key,
@@ -22,7 +23,8 @@ class JobPage extends StatefulWidget {
     required this.education,
     required this.race,
     required this.companyName,
-    required this.companyAddr,
+    required this.companyCity,
+    required this.companyState,
     required this.companyID,
   });
 

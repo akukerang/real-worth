@@ -149,7 +149,7 @@ class _EditCompanyState extends State<EditCompany> {
                         ),
                         const SizedBox(height: 8.0),
                         Text(
-                          'Location: ${company['address']}',
+                          'Location: ${company['city']}, ${company['state']}',
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[600],

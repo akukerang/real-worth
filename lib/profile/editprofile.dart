@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../global/globalStyle.dart';
 
 import '../components/my_button.dart';
 
@@ -76,21 +77,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const SizedBox(height: 16.0),
+                        const Text(
+                          "Job Title",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
                         TextFormField(
                           initialValue: _jobTitle,
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400),
-                            ),
-                            fillColor: Colors.grey.shade200,
-                            filled: true,
-                            labelText: "Job Title",
-                            hintStyle: TextStyle(color: Colors.grey[500]),
-                          ),
+                          decoration: componentStyle.textFieldStyle(),
                           validator: (value) {
                             if (value!.trim().isEmpty) {
                               return "Please enter a job title";
@@ -104,24 +101,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           },
                         ),
                         const SizedBox(height: 16.0),
+                        const Text(
+                          "Salary",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
                         TextFormField(
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400),
-                            ),
-                            fillColor: Colors.grey.shade200,
-                            filled: true,
-                            labelText: "Salary",
-                            hintStyle: TextStyle(color: Colors.grey[500]),
-                          ),
+                          decoration: componentStyle.textFieldStyle(),
                           initialValue: _salary,
                           onSaved: (value) {
                             setState(() {
@@ -136,21 +129,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           },
                         ),
                         const SizedBox(height: 16.0),
+                        const Text(
+                          "Years Worked",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
                         TextFormField(
                           initialValue: _years,
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400),
-                            ),
-                            fillColor: Colors.grey.shade200,
-                            filled: true,
-                            labelText: "Years Worked",
-                            hintStyle: TextStyle(color: Colors.grey[500]),
-                          ),
+                          decoration: componentStyle.textFieldStyle(),
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
@@ -178,18 +167,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         const SizedBox(height: 8.0),
                         DropdownButtonFormField(
                             value: _race,
-                            decoration: InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey.shade400),
-                              ),
-                              fillColor: Colors.grey.shade200,
-                              filled: true,
-                              hintStyle: TextStyle(color: Colors.grey[500]),
-                            ),
+                            decoration: componentStyle.dropdownStyle(),
                             items: _raceOptions.map((race) {
                               return DropdownMenuItem(
                                 value: race,
@@ -212,18 +190,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ),
                         const SizedBox(height: 8.0),
                         DropdownButtonFormField(
-                            decoration: InputDecoration(
-                              enabledBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey.shade400),
-                              ),
-                              fillColor: Colors.grey.shade200,
-                              filled: true,
-                              hintStyle: TextStyle(color: Colors.grey[500]),
-                            ),
+                            decoration: componentStyle.dropdownStyle(),
                             value: _gender,
                             items: _genderOptions.map((gender) {
                               return DropdownMenuItem(
@@ -247,18 +214,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ),
                         const SizedBox(height: 8.0),
                         DropdownButtonFormField(
-                          decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey.shade400),
-                            ),
-                            fillColor: Colors.grey.shade200,
-                            filled: true,
-                            hintStyle: TextStyle(color: Colors.grey[500]),
-                          ),
+                          decoration: componentStyle.dropdownStyle(),
                           value: _education,
                           items: _educationOptions.map((education) {
                             return DropdownMenuItem(
@@ -275,6 +231,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ),
                         const SizedBox(height: 32.0),
                         MyButton(
+                          label: "Save Changes",
                           onTap: () async {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
@@ -302,6 +259,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                             "Your profile has been successfully edited"),
                                         actions: [
                                           ElevatedButton(
+                                              style: componentStyle
+                                                  .elevatedStyle(),
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },

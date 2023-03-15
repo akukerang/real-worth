@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:real_worth/components/my_button.dart';
+import '../global/globalStyle.dart';
 
 class changePassword extends StatefulWidget {
   const changePassword({Key? key}) : super(key: key);
@@ -55,21 +57,19 @@ class _changePasswordState extends State<changePassword> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 16.0),
+                const Text(
+                  "Current Password",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
+                  ),
+                ),
+                const SizedBox(height: 8.0),
                 TextFormField(
                   obscureText: true,
                   controller: _currentPasswordController,
-                  decoration: InputDecoration(
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      labelText: "Current Password",
-                      hintStyle: TextStyle(color: Colors.grey[500]),
-                      errorText: _correctPassword ? null : "Wrong Password"),
+                  decoration: componentStyle.textFieldStyle(
+                      hintTextStr: "Enter your current password"),
                   onSaved: (value) {
                     setState(() {
                       _currentPassword = value!.trim();
@@ -82,6 +82,14 @@ class _changePasswordState extends State<changePassword> {
                   },
                 ),
                 const SizedBox(height: 16.0),
+                const Text(
+                  "New Password",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
+                  ),
+                ),
+                const SizedBox(height: 8.0),
                 TextFormField(
                   obscureText: true,
                   controller: _newPasswordController,
@@ -90,18 +98,8 @@ class _changePasswordState extends State<changePassword> {
                       _newPassword = value!.trim();
                     });
                   },
-                  decoration: InputDecoration(
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                    ),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    labelText: "New Password",
-                    hintStyle: TextStyle(color: Colors.grey[500]),
-                  ),
+                  decoration: componentStyle.textFieldStyle(
+                      hintTextStr: "Enter a new password"),
                   validator: (value) {
                     if (value!.trim().isEmpty) {
                       return "Please enter a value";
@@ -112,21 +110,18 @@ class _changePasswordState extends State<changePassword> {
                   },
                 ),
                 const SizedBox(height: 16.0),
+                const Text(
+                  "Confirm Password",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
+                  ),
+                ),
+                const SizedBox(height: 8.0),
                 TextFormField(
                   controller: _newPassword2Controller,
-                  decoration: InputDecoration(
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                    ),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    labelText: "Confirm Password",
-                    hintText: "Confirm Password",
-                    hintStyle: TextStyle(color: Colors.grey[500]),
-                  ),
+                  decoration: componentStyle.textFieldStyle(
+                      hintTextStr: "Enter the new password again"),
                   obscureText: true,
                   onSaved: (value) {
                     setState(() {
@@ -144,8 +139,9 @@ class _changePasswordState extends State<changePassword> {
                   },
                 ),
                 const SizedBox(height: 32.0),
-                ElevatedButton(
-                  onPressed: () async {
+                MyButton(
+                  label: "Save Changes",
+                  onTap: () async {
                     _correctPassword = await checkPassword(
                         _currentPasswordController.text.trim());
                     if (_formKey.currentState!.validate()) {
@@ -161,6 +157,7 @@ class _changePasswordState extends State<changePassword> {
                                       "Your password has been successfully changed"),
                                   actions: [
                                     ElevatedButton(
+                                        style: componentStyle.elevatedStyle(),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
@@ -170,7 +167,6 @@ class _changePasswordState extends State<changePassword> {
                       }
                     }
                   },
-                  child: const Text("Save"),
                 ),
               ],
             ),

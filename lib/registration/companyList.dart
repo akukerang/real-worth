@@ -65,15 +65,15 @@ class _CompanyListState extends State<CompanyList> {
         context,
         MaterialPageRoute(
           builder: (context) => JobPage(
-            email: widget.email,
-            password: widget.password,
-            gender: widget.gender,
-            education: widget.education,
-            race: widget.race,
-            companyID: _selectedCompany!.id,
-            companyName: _selectedCompany!['name'],
-            companyAddr: _selectedCompany!['address'],
-          ),
+              email: widget.email,
+              password: widget.password,
+              gender: widget.gender,
+              education: widget.education,
+              race: widget.race,
+              companyID: _selectedCompany!.id,
+              companyName: _selectedCompany!['name'],
+              companyCity: _selectedCompany!['city'],
+              companyState: _selectedCompany!['state']),
         ),
       );
       // ignore: use_build_context_synchronously
@@ -136,7 +136,7 @@ class _CompanyListState extends State<CompanyList> {
                         ),
                         const SizedBox(height: 8.0),
                         Text(
-                          'Location: ${company['address']}',
+                          'Location: ${company['city']}, ${company['state']}',
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey[600],

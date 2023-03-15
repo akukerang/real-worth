@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'editprofile.dart';
 import 'settings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../global/globalStyle.dart';
 
 class ProfilePage extends StatefulWidget {
   final String current;
@@ -75,7 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text(
                     'Gender',
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
@@ -87,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text(
                     'Education',
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
@@ -99,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text(
                     'Race',
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
@@ -111,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text(
                     'Job',
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
@@ -123,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text(
                     'Salary',
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
@@ -135,7 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text(
                     'Company',
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
@@ -147,19 +148,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Text(
                     'Location',
                     style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
                   ),
                   const Divider(),
                   const SizedBox(height: 8.0),
                   Text(
-                    '${company['address']}',
+                    '${company['city']}, ${company['state']}',
                     style: const TextStyle(fontSize: 18.0),
                   ),
                   const SizedBox(height: 24.0),
                   Center(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black),
+                      style: componentStyle.elevatedStyle(),
                       child: const Text('Edit Profile'),
                       onPressed: () {
                         Navigator.push(
