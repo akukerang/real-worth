@@ -47,7 +47,7 @@ class _CreateAccountState extends State<CreateAccount> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const SizedBox(height: 60),
+            //const SizedBox(height: 60),
 
             //title
             Text(
@@ -57,6 +57,8 @@ class _CreateAccountState extends State<CreateAccount> {
                 fontSize: 32,
               ),
             ),
+
+            const SizedBox(height: 20),
 
             Label(label: "Email"),
             //email
