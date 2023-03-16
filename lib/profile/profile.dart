@@ -8,7 +8,7 @@ import '../global/globalStyle.dart';
 class ProfilePage extends StatefulWidget {
   final String current;
 
-  ProfilePage({
+  ProfilePage({ 
     required this.current,
   });
 

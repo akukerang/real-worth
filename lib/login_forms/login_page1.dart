@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 30),
 
                   //username textfield
                   MyTextField(
@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                         loginFail ? 'Wrong email or Wrong password' : null,
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
 
                   //password TextField
                   MyTextField(
