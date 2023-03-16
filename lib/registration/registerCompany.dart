@@ -34,12 +34,13 @@ class _RegisterCompanyState extends State<RegisterCompany> {
         child: ListView(
           padding: const EdgeInsets.all(20.0),
           children: [
+            Label(label: "Company Name"),
             MyTextField(
               controller: _compNameController,
               hintText: "Enter the company name",
               validator: (value) {
                 if (value!.trim().isEmpty) {
-                  return 'Please enter the company name';
+                  return 'Please enter a value';
                 } else if (exists) {
                   return 'This company already exists';
                 }
@@ -49,14 +50,14 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 _compName = value!.trim();
               },
             ),
-            const SizedBox(height: 16.0),
+            Label(label: "City"),
             MyTextField(
               controller: _cityController,
               keyboardType: TextInputType.name,
               hintText: "Enter the city",
               validator: (value) {
                 if (value!.trim().isEmpty) {
-                  return 'Please enter the city';
+                  return 'Please enter a value';
                 } else if (exists) {
                   return 'This company already exists';
                 }
@@ -66,29 +67,17 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 _city = value!.trim();
               },
             ),
-            const SizedBox(height: 16.0),
-            TextFormField(
+            Label(label: "State"),
+            MyTextField(
               controller: _stateController,
+              hintText: "Enter the state",
               keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                labelText: 'State',
-                hintText: 'Enter the states abbreviation',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
               validator: (value) {
                 if (value!.trim().isEmpty) {
-                  return 'Please enter the state';
+                  return 'Please enter a value';
                 }
                 if (value.length != 2) {
-                  return "Please enter the abbreivation";
+                  return "Please enter the state abbreivation";
                 } else if (exists) {
                   return 'This company already exists';
                 }

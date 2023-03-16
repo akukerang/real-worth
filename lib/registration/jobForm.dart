@@ -71,9 +71,9 @@ class _JobPageState extends State<JobPage> {
                     ),
                   ),
                   const SizedBox(height: 50),
+                  const Label(label: "Job Title"),
                   MyTextField(
                     controller: _jobNameController,
-                    labelText: 'Job Title',
                     hintText: 'Enter your job title',
                     validator: (value) {
                       if (value!.trim().isEmpty) {
@@ -85,14 +85,13 @@ class _JobPageState extends State<JobPage> {
                       _jobName = value!.trim();
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const Label(label: "Salary"),
                   MyTextField(
                     keyboardType: TextInputType.number,
                     controller: _salaryController,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly
                     ],
-                    labelText: 'Salary',
                     hintText: 'Enter your salary',
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -104,14 +103,13 @@ class _JobPageState extends State<JobPage> {
                       _salary = value;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  const Label(label: "Years worked"),
                   MyTextField(
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly
                     ],
                     controller: _yearsController,
-                    labelText: 'Years',
                     hintText: 'Enter your years worked there',
                     validator: (value) {
                       if (value!.isEmpty) {

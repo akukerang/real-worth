@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:real_worth/components/label.dart';
 import 'package:real_worth/components/my_button.dart';
+import 'package:real_worth/components/my_textfield.dart';
 import '../global/globalStyle.dart';
 
 class changeEmail extends StatefulWidget {
@@ -51,18 +53,12 @@ class _changeEmailState extends State<changeEmail> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 16.0),
-                const Text(
-                  "Current Password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
+                const Label(label: "Current Password"),
                 const SizedBox(height: 8.0),
-                TextFormField(
+                MyTextField(
                   obscureText: true,
                   controller: _currentPasswordController,
-                  decoration: componentStyle.textFieldStyle(),
+                  hintText: "Current Password",
                   onSaved: (value) {
                     setState(() {
                       _currentPassword = value!.trim();
@@ -78,18 +74,11 @@ class _changeEmailState extends State<changeEmail> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  "Current New Email",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
+                const Label(label: "New Email"),
                 const SizedBox(height: 8.0),
-                TextFormField(
+                MyTextField(
                   controller: _newEmailController,
-                  decoration: componentStyle.textFieldStyle(),
+                  hintText: "Enter a new email",
                   onSaved: (value) {
                     setState(() {
                       _newEmail = value!.trim();
@@ -105,18 +94,10 @@ class _changeEmailState extends State<changeEmail> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  "Confirm Email",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                TextFormField(
+                const Label(label: "Confirm Email"),
+                MyTextField(
                   controller: _newEmail2Controller,
-                  decoration: componentStyle.textFieldStyle(),
+                  hintText: "Enter the email again",
                   onSaved: (value) {
                     setState(() {
                       _newEmail = value!.trim();

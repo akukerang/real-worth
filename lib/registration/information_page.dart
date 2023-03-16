@@ -50,7 +50,7 @@ class _InformationPageState extends State<InformationPage> {
                     ),
 
                     const SizedBox(height: 50),
-                    Label(label: "Race"),
+                    const Label(label: "Race"),
                     //race
                     MyDropdown(
                         menuItems: const [
@@ -74,7 +74,7 @@ class _InformationPageState extends State<InformationPage> {
                           // return null;
                         }),
 
-                    Label(label: "Gender"),
+                    const Label(label: "Gender"),
 
                     //gender
                     MyDropdown(
@@ -93,7 +93,7 @@ class _InformationPageState extends State<InformationPage> {
                           return null;
                         }),
 
-                    Label(label: "Education"),
+                    const Label(label: "Education"),
 
                     //education
                     MyDropdown(

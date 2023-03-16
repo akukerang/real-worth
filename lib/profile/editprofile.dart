@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:real_worth/components/my_textfield.dart';
+import '../components/my_dropdown.dart';
 import '../global/globalStyle.dart';
 
 import '../components/my_button.dart';
@@ -85,9 +87,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        TextFormField(
+                        MyTextField(
                           initialValue: _jobTitle,
-                          decoration: componentStyle.textFieldStyle(),
+                          hintText: "Job Title",
                           validator: (value) {
                             if (value!.trim().isEmpty) {
                               return "Please enter a job title";
@@ -109,12 +111,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        TextFormField(
+                        MyTextField(
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
-                          decoration: componentStyle.textFieldStyle(),
+                          hintText: "Salary",
                           initialValue: _salary,
                           onSaved: (value) {
                             setState(() {
@@ -137,9 +139,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        TextFormField(
+                        MyTextField(
                           initialValue: _years,
-                          decoration: componentStyle.textFieldStyle(),
+                          hintText: "Years worked",
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
@@ -165,21 +167,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        DropdownButtonFormField(
+                        MyDropdown(
+                            menuItems: const [
+                              'White',
+                              'Black',
+                              'Asian',
+                              'Latino',
+                              'Other'
+                            ],
                             value: _race,
-                            decoration: componentStyle.dropdownStyle(),
-                            items: _raceOptions.map((race) {
-                              return DropdownMenuItem(
-                                value: race,
-                                child: Text(race),
-                              );
-                            }).toList(),
+                            hint: 'Select a Race',
                             onSaved: (value) {
                               setState(() {
-                                _race = value as String?;
+                                _race = value.toString();
                               });
                             },
-                            onChanged: (value) {}),
+                            onChanged: (value) {},
+                            validator: (value) {}),
                         const SizedBox(height: 16.0),
                         const Text(
                           "Gender",
@@ -189,21 +193,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        DropdownButtonFormField(
-                            decoration: componentStyle.dropdownStyle(),
+                        MyDropdown(
+                            menuItems: const ['Male', 'Female', 'Other'],
                             value: _gender,
-                            items: _genderOptions.map((gender) {
-                              return DropdownMenuItem(
-                                value: gender,
-                                child: Text(gender),
-                              );
-                            }).toList(),
+                            hint: 'Select Gender',
                             onSaved: (value) {
                               setState(() {
-                                _gender = value as String?;
+                                _gender = value.toString();
                               });
                             },
-                            onChanged: (value) {}),
+                            onChanged: (value) {},
+                            validator: (value) {}),
                         const SizedBox(height: 16.0),
                         const Text(
                           "Education Level",
@@ -213,21 +213,24 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 8.0),
-                        DropdownButtonFormField(
-                          decoration: componentStyle.dropdownStyle(),
+                        MyDropdown(
+                          menuItems: const [
+                            'None',
+                            'High School',
+                            'Associates',
+                            'Bachelors',
+                            'Masters',
+                            'PHD'
+                          ],
                           value: _education,
-                          items: _educationOptions.map((education) {
-                            return DropdownMenuItem(
-                              value: education,
-                              child: Text(education),
-                            );
-                          }).toList(),
+                          hint: 'Select Education Level',
                           onSaved: (value) {
                             setState(() {
-                              _education = value as String?;
+                              _education = value.toString();
                             });
                           },
                           onChanged: (value) {},
+                          validator: (value) {},
                         ),
                         const SizedBox(height: 32.0),
                         MyButton(

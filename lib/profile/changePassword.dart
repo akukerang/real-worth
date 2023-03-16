@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:real_worth/components/label.dart';
 import 'package:real_worth/components/my_button.dart';
+import 'package:real_worth/components/my_textfield.dart';
 import '../global/globalStyle.dart';
 
 class changePassword extends StatefulWidget {
@@ -56,20 +58,11 @@ class _changePasswordState extends State<changePassword> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(height: 16.0),
-                const Text(
-                  "Current Password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                TextFormField(
+                const Label(label: "Current Password"),
+                MyTextField(
                   obscureText: true,
                   controller: _currentPasswordController,
-                  decoration: componentStyle.textFieldStyle(
-                      hintTextStr: "Enter your current password"),
+                  hintText: "Enter your current password",
                   onSaved: (value) {
                     setState(() {
                       _currentPassword = value!.trim();
@@ -81,16 +74,8 @@ class _changePasswordState extends State<changePassword> {
                     }
                   },
                 ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  "New Password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                TextFormField(
+                const Label(label: "New Password"),
+                MyTextField(
                   obscureText: true,
                   controller: _newPasswordController,
                   onSaved: (value) {
@@ -98,8 +83,7 @@ class _changePasswordState extends State<changePassword> {
                       _newPassword = value!.trim();
                     });
                   },
-                  decoration: componentStyle.textFieldStyle(
-                      hintTextStr: "Enter a new password"),
+                  hintText: "Enter a new password",
                   validator: (value) {
                     if (value!.trim().isEmpty) {
                       return "Please enter a value";
@@ -109,19 +93,10 @@ class _changePasswordState extends State<changePassword> {
                     }
                   },
                 ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  "Confirm Password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                TextFormField(
+                const Label(label: "Confirm Password"),
+                MyTextField(
                   controller: _newPassword2Controller,
-                  decoration: componentStyle.textFieldStyle(
-                      hintTextStr: "Enter the new password again"),
+                  hintText: "Enter the new password again",
                   obscureText: true,
                   onSaved: (value) {
                     setState(() {

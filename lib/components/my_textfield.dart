@@ -9,13 +9,14 @@ class MyTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final String? errorText;
   final List<TextInputFormatter>? inputFormatters;
+  final String? initialValue;
 
   final void Function(String?) onSaved;
   final String? Function(String?) validator;
 
   const MyTextField(
       {super.key,
-      required this.controller,
+      this.controller,
       required this.hintText,
       this.obscureText = false,
       this.labelText = '',
@@ -23,16 +24,19 @@ class MyTextField extends StatelessWidget {
       this.errorText,
       required this.onSaved,
       required this.validator,
-      this.inputFormatters});
+      this.inputFormatters,
+      this.initialValue});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
+        initialValue: initialValue,
         controller: controller,
         keyboardType: keyboardType,
         obscureText: obscureText,
+        inputFormatters: inputFormatters,
         decoration: InputDecoration(
           errorText: errorText,
           enabledBorder: const OutlineInputBorder(

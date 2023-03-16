@@ -78,9 +78,9 @@ class _ScatterplotState extends State<Scatterplot> {
         {
           return FutureBuilder<List<List<userData>>>(
             future: Future.wait([
-              getSalaryData(widget.company, widget.current, "gender", "male"),
-              getSalaryData(widget.company, widget.current, "gender", "female"),
-              getSalaryData(widget.company, widget.current, "gender", "other"),
+              getSalaryData(widget.company, widget.current, "gender", "Male"),
+              getSalaryData(widget.company, widget.current, "gender", "Female"),
+              getSalaryData(widget.company, widget.current, "gender", "Other"),
               getCurrentSalaryData(widget.current),
               getAllData(widget.company),
             ]),
@@ -170,16 +170,16 @@ class _ScatterplotState extends State<Scatterplot> {
           return FutureBuilder<List<List<userData>>>(
             future: Future.wait([
               getSalaryData(
-                  widget.company, widget.current, "education", "none"),
+                  widget.company, widget.current, "education", "None"),
               getSalaryData(
-                  widget.company, widget.current, "education", "highschool"),
+                  widget.company, widget.current, "education", "High School"),
               getSalaryData(
-                  widget.company, widget.current, "education", "associate"),
+                  widget.company, widget.current, "education", "Associates"),
               getSalaryData(
-                  widget.company, widget.current, "education", "bachelor"),
+                  widget.company, widget.current, "education", "Bachelors"),
               getSalaryData(
-                  widget.company, widget.current, "education", "master"),
-              getSalaryData(widget.company, widget.current, "education", "phd"),
+                  widget.company, widget.current, "education", "Masters"),
+              getSalaryData(widget.company, widget.current, "education", "PHD"),
               getCurrentSalaryData(widget.current),
               getAllData(widget.company),
             ]),
@@ -298,11 +298,11 @@ class _ScatterplotState extends State<Scatterplot> {
         {
           return FutureBuilder<List<List<userData>>>(
             future: Future.wait([
-              getSalaryData(widget.company, widget.current, "race", "white"),
-              getSalaryData(widget.company, widget.current, "race", "black"),
-              getSalaryData(widget.company, widget.current, "race", "asian"),
-              getSalaryData(widget.company, widget.current, "race", "hispanic"),
-              getSalaryData(widget.company, widget.current, "race", "other"),
+              getSalaryData(widget.company, widget.current, "race", "White"),
+              getSalaryData(widget.company, widget.current, "race", "Black"),
+              getSalaryData(widget.company, widget.current, "race", "Asian"),
+              getSalaryData(widget.company, widget.current, "race", "Latino"),
+              getSalaryData(widget.company, widget.current, "race", "Other"),
               getCurrentSalaryData(widget.current),
               getAllData(widget.company),
             ]),
