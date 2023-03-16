@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import '../components/label.dart';
+import '../components/my_textfield.dart';
 
 import '../salary_page/getData.dart';
 
@@ -13,10 +15,8 @@ class RegisterCompany extends StatefulWidget {
 class _RegisterCompanyState extends State<RegisterCompany> {
   final _formKey = GlobalKey<FormState>();
   final _compNameController = TextEditingController();
-  final _streetController = TextEditingController();
   final _cityController = TextEditingController();
   final _stateController = TextEditingController();
-  final _zipcodeController = TextEditingController();
 
   String? _compName;
   String? _city;
@@ -34,21 +34,9 @@ class _RegisterCompanyState extends State<RegisterCompany> {
         child: ListView(
           padding: const EdgeInsets.all(20.0),
           children: [
-            TextFormField(
+            MyTextField(
               controller: _compNameController,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                labelText: 'Company Name',
-                hintText: 'Enter the company name',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
+              hintText: "Enter the company name",
               validator: (value) {
                 if (value!.trim().isEmpty) {
                   return 'Please enter the company name';
@@ -62,22 +50,10 @@ class _RegisterCompanyState extends State<RegisterCompany> {
               },
             ),
             const SizedBox(height: 16.0),
-            TextFormField(
+            MyTextField(
               controller: _cityController,
               keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                labelText: 'City',
-                hintText: 'Enter the city',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
+              hintText: "Enter the city",
               validator: (value) {
                 if (value!.trim().isEmpty) {
                   return 'Please enter the city';

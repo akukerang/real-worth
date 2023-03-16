@@ -55,12 +55,12 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: Column( 
+              child: Column(
                 //shrinkWrap: true,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
-      
+
                   Text(
                     'Welcome!',
                     style: TextStyle(
@@ -85,9 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                     onSaved: (newValue) {
                       email = newValue;
                     },
-                      errorText:
-                          loginFail ? 'Wrong email or Wrong password' : null,
-                    ),
+                    errorText:
+                        loginFail ? 'Wrong email or Wrong password' : null,
+                  ),
 
                   const SizedBox(height: 10),
 
@@ -107,8 +107,8 @@ class _LoginPageState extends State<LoginPage> {
                       password = newValue;
                     },
                     errorText:
-                          loginFail ? 'Wrong email or Wrong password' : null,
-                    ),
+                        loginFail ? 'Wrong email or Wrong password' : null,
+                  ),
 
                   const SizedBox(height: 10),
 
@@ -128,10 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
 
                   //sign in button
-                  MyButton(
-                    onTap: signUserIn,
-                    buttonText: "Sign In"
-                  ),
+                  MyButton(onTap: signUserIn, label: "Sign In"),
 
                   const SizedBox(height: 40),
 

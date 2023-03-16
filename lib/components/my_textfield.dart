@@ -13,18 +13,17 @@ class MyTextField extends StatelessWidget {
   final void Function(String?) onSaved;
   final String? Function(String?) validator;
 
-  const MyTextField({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    this.obscureText = false,
-    this.labelText = '',
-    this. keyboardType = TextInputType.text,
-    this.errorText,
-    required this.onSaved,
-    required this.validator,
-    this.inputFormatters
-  });
+  const MyTextField(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      this.obscureText = false,
+      this.labelText = '',
+      this.keyboardType = TextInputType.text,
+      this.errorText,
+      required this.onSaved,
+      required this.validator,
+      this.inputFormatters});
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +47,8 @@ class MyTextField extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.grey[500]),
         ),
-        validator: (value) {
-          validator(value);
-          return null;
-        },
-        onSaved: (value) {
-          onSaved(value);
-        },
+        validator: validator,
+        onSaved: onSaved,
       ),
     );
   }

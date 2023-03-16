@@ -7,7 +7,6 @@ class MyDropdown extends StatefulWidget {
   final void Function(Object?)? onChanged;
   final String? Function(Object?) validator;
 
-
   const MyDropdown({
     Key? key,
     required this.menuItems,
@@ -21,15 +20,6 @@ class MyDropdown extends StatefulWidget {
 }
 
 class _MyDropdownState extends State<MyDropdown> {
-  // String selectedmenuItem = '';
-  //@override
-  // void initState() {
-  //   super.initState();
-  //   if (widget.menuItems.isNotEmpty) {
-  //     selectedmenuItem = widget.menuItems.first;
-  //   }
-  //}
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,23 +35,20 @@ class _MyDropdownState extends State<MyDropdown> {
           fillColor: Colors.grey.shade200,
           filled: true,
           hintStyle: TextStyle(color: Colors.grey[500]),
-          ),
+        ),
         value: widget.value,
         items: widget.menuItems?.map((item) {
           return DropdownMenuItem(
             value: item,
             child: Text(item),
           );
-          }).toList(),
+        }).toList(),
         hint: Text(widget.hint),
         onChanged: (value) {
           widget.onChanged!(value); // check later
-          },
-        validator: (value) {
-          widget.validator(value);
-          return null;
-          },
-         //check later
+        },
+        validator: widget.validator,
+        //check later
       ),
     );
   }
