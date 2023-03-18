@@ -60,7 +60,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
             const SizedBox(height: 20),
 
-            Label(label: "Email"),
+            const Label(label: "Email"),
             //email
             MyTextField(
               controller: emailController,
@@ -81,7 +81,7 @@ class _CreateAccountState extends State<CreateAccount> {
               },
             ),
 
-            Label(label: "Password"),
+            const Label(label: "Password"),
 
             //password and confirm password
             MyTextField(
@@ -100,7 +100,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   _password = value!.trim();
                 }),
 
-            Label(label: "Confirm Password"),
+            const Label(label: "Confirm Password"),
 
             MyTextField(
               hintText: "Confirm Password",

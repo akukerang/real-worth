@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:real_worth/components/my_textfield.dart';
+import '../components/label.dart';
 import '../components/my_dropdown.dart';
 import '../global/globalStyle.dart';
 
@@ -29,23 +30,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String? _years;
   String? _race;
   String? _gender;
-  final List<String> _raceOptions = [
-    "White",
-    "Black",
-    "Asian",
-    "Latino",
-    "Other"
-  ];
-  final List<String> _educationOptions = [
-    "None",
-    "High School",
-    "Associates",
-    "Bachelors",
-    "Masters",
-    "PHD"
-  ];
-
-  final List<String> _genderOptions = ["Male", "Female", "Other"];
 
   @override
   Widget build(BuildContext context) {
@@ -78,15 +62,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          "Job Title",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
+
+                        const Label(label: "Job Title"),
+
                         MyTextField(
                           initialValue: _jobTitle,
                           hintText: "Job Title",
@@ -102,15 +80,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             });
                           },
                         ),
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          "Salary",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
+
+                        const Label(label: "Salary"),
+                        
                         MyTextField(
                           keyboardType: TextInputType.number,
                           inputFormatters: [
@@ -130,15 +102,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          "Years Worked",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
+
+                        const Label(label: "Years Worked"),
+
                         MyTextField(
                           initialValue: _years,
                           hintText: "Years worked",
@@ -158,15 +124,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             });
                           },
                         ),
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          "Race",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
+
+                        const Label(label:"Race"),
+                          
                         MyDropdown(
                             menuItems: const [
                               'White',
@@ -183,16 +143,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               });
                             },
                             onChanged: (value) {},
-                            validator: (value) {}),
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          "Gender",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
+                            validator: (value) {}
                         ),
-                        const SizedBox(height: 8.0),
+
+                        
+                        const Label(label: "Gender"),
+                        
                         MyDropdown(
                             menuItems: const ['Male', 'Female', 'Other'],
                             value: _gender,
@@ -203,16 +159,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               });
                             },
                             onChanged: (value) {},
-                            validator: (value) {}),
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          "Education Level",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
+                            validator: (value) {}
                         ),
-                        const SizedBox(height: 8.0),
+                        
+                        const Label(label: "Education Level"),
+                
                         MyDropdown(
                           menuItems: const [
                             'None',
@@ -232,7 +183,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           onChanged: (value) {},
                           validator: (value) {},
                         ),
-                        const SizedBox(height: 32.0),
+
                         MyButton(
                           label: "Save Changes",
                           onTap: () async {

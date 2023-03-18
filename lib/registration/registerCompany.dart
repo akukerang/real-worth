@@ -34,7 +34,9 @@ class _RegisterCompanyState extends State<RegisterCompany> {
         child: ListView(
           padding: const EdgeInsets.all(20.0),
           children: [
-            Label(label: "Company Name"),
+
+            const Label(label: "Company Name"),
+
             MyTextField(
               controller: _compNameController,
               hintText: "Enter the company name",
@@ -50,7 +52,9 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 _compName = value!.trim();
               },
             ),
-            Label(label: "City"),
+
+            const Label(label: "City"),
+
             MyTextField(
               controller: _cityController,
               keyboardType: TextInputType.name,
@@ -67,7 +71,9 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 _city = value!.trim();
               },
             ),
-            Label(label: "State"),
+            
+            const Label(label: "State"),
+            
             MyTextField(
               controller: _stateController,
               hintText: "Enter the state",
