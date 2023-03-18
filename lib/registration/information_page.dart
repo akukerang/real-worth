@@ -38,6 +38,7 @@ class _InformationPageState extends State<InformationPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Row(
                         children: [
+                          
                           Text(
                             'Your Information',
                             style: TextStyle(
@@ -50,8 +51,9 @@ class _InformationPageState extends State<InformationPage> {
                     ),
 
                     const SizedBox(height: 50),
+                    
                     const Label(label: "Race"),
-                    //race
+                    
                     MyDropdown(
                         menuItems: const [
                           'White',
@@ -71,12 +73,10 @@ class _InformationPageState extends State<InformationPage> {
                           if (value == null) {
                             return 'Please select a race';
                           }
-                          // return null;
                         }),
 
                     const Label(label: "Gender"),
 
-                    //gender
                     MyDropdown(
                         menuItems: const ['Male', 'Female', 'Other'],
                         value: _gender,
@@ -95,7 +95,6 @@ class _InformationPageState extends State<InformationPage> {
 
                     const Label(label: "Education"),
 
-                    //education
                     MyDropdown(
                       menuItems: const [
                         'None',

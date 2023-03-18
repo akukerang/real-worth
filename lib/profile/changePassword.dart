@@ -74,7 +74,9 @@ class _changePasswordState extends State<changePassword> {
                     }
                   },
                 ),
+                
                 const Label(label: "New Password"),
+                
                 MyTextField(
                   obscureText: true,
                   controller: _newPasswordController,
@@ -93,7 +95,9 @@ class _changePasswordState extends State<changePassword> {
                     }
                   },
                 ),
+                
                 const Label(label: "Confirm Password"),
+                
                 MyTextField(
                   controller: _newPassword2Controller,
                   hintText: "Enter the new password again",
@@ -113,7 +117,9 @@ class _changePasswordState extends State<changePassword> {
                     }
                   },
                 ),
+                
                 const SizedBox(height: 32.0),
+                
                 MyButton(
                   label: "Save Changes",
                   onTap: () async {

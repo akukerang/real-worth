@@ -70,7 +70,9 @@ class _JobPageState extends State<JobPage> {
                       ],
                     ),
                   ),
+                  
                   const SizedBox(height: 50),
+                  
                   const Label(label: "Job Title"),
                   MyTextField(
                     controller: _jobNameController,
@@ -85,7 +87,9 @@ class _JobPageState extends State<JobPage> {
                       _jobName = value!.trim();
                     },
                   ),
+                  
                   const Label(label: "Salary"),
+                  
                   MyTextField(
                     keyboardType: TextInputType.number,
                     controller: _salaryController,
@@ -103,7 +107,9 @@ class _JobPageState extends State<JobPage> {
                       _salary = value;
                     },
                   ),
+                  
                   const Label(label: "Years worked"),
+                  
                   MyTextField(
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
@@ -121,7 +127,9 @@ class _JobPageState extends State<JobPage> {
                       _years = value;
                     },
                   ),
+                  
                   const SizedBox(height: 32.0),
+                  
                   MyButton(
                     label: 'Next',
                     onTap: () async {
