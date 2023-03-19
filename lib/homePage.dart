@@ -17,15 +17,15 @@ void signUserOut() {
 
 int _selectedIndex = 0;
 int _categoryIndex = 0;
-final String current =
-    FirebaseAuth.instance.currentUser!.uid; //Gets current users ID
 
 class HomePageState extends State<HomePage> {
   late String companyID;
+  late String current;
 
   @override
   void initState() {
     super.initState();
+    current = FirebaseAuth.instance.currentUser!.uid;
     getCompanyID(current).then((value) {
       setState(() {
         companyID =
