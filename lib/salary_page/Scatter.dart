@@ -15,11 +15,12 @@ Future<List<userData>> getCurrentSalaryData(String current) async {
   return allData;
 }
 
-Future<List<userData>> getSalaryData(
-    String companyId, String current, String parameter, dynamic equalTo) async {
+Future<List<userData>> getSalaryData(String companyId, String current,
+    String parameter, dynamic equalTo, String job_name) async {
   CollectionReference db = FirebaseFirestore.instance.collection('users');
   QuerySnapshot snap = await db
       .where("job.company_id", isEqualTo: companyId)
+      .where("job.job_title", isEqualTo: job_name)
       .where(FieldPath.documentId, isNotEqualTo: current)
       .where(parameter, isEqualTo: equalTo)
       .get();
@@ -43,11 +44,13 @@ class Scatterplot extends StatefulWidget {
   final String category;
   final String company;
   final String current;
+  final String job_name;
   const Scatterplot(
       {Key? key,
       required this.category,
       required this.company,
-      required this.current})
+      required this.current,
+      required this.job_name})
       : super(key: key);
 
   @override
@@ -78,9 +81,12 @@ class _ScatterplotState extends State<Scatterplot> {
         {
           return FutureBuilder<List<List<userData>>>(
             future: Future.wait([
-              getSalaryData(widget.company, widget.current, "gender", "Male"),
-              getSalaryData(widget.company, widget.current, "gender", "Female"),
-              getSalaryData(widget.company, widget.current, "gender", "Other"),
+              getSalaryData(widget.company, widget.current, "gender", "Male",
+                  widget.job_name),
+              getSalaryData(widget.company, widget.current, "gender", "Female",
+                  widget.job_name),
+              getSalaryData(widget.company, widget.current, "gender", "Other",
+                  widget.job_name),
               getCurrentSalaryData(widget.current),
               getAllData(widget.company),
             ]),
@@ -169,17 +175,18 @@ class _ScatterplotState extends State<Scatterplot> {
         {
           return FutureBuilder<List<List<userData>>>(
             future: Future.wait([
-              getSalaryData(
-                  widget.company, widget.current, "education", "None"),
-              getSalaryData(
-                  widget.company, widget.current, "education", "High School"),
-              getSalaryData(
-                  widget.company, widget.current, "education", "Associates"),
-              getSalaryData(
-                  widget.company, widget.current, "education", "Bachelors"),
-              getSalaryData(
-                  widget.company, widget.current, "education", "Masters"),
-              getSalaryData(widget.company, widget.current, "education", "PHD"),
+              getSalaryData(widget.company, widget.current, "education", "None",
+                  widget.job_name),
+              getSalaryData(widget.company, widget.current, "education",
+                  "High School", widget.job_name),
+              getSalaryData(widget.company, widget.current, "education",
+                  "Associates", widget.job_name),
+              getSalaryData(widget.company, widget.current, "education",
+                  "Bachelors", widget.job_name),
+              getSalaryData(widget.company, widget.current, "education",
+                  "Masters", widget.job_name),
+              getSalaryData(widget.company, widget.current, "education", "PHD",
+                  widget.job_name),
               getCurrentSalaryData(widget.current),
               getAllData(widget.company),
             ]),
@@ -298,11 +305,16 @@ class _ScatterplotState extends State<Scatterplot> {
         {
           return FutureBuilder<List<List<userData>>>(
             future: Future.wait([
-              getSalaryData(widget.company, widget.current, "race", "White"),
-              getSalaryData(widget.company, widget.current, "race", "Black"),
-              getSalaryData(widget.company, widget.current, "race", "Asian"),
-              getSalaryData(widget.company, widget.current, "race", "Latino"),
-              getSalaryData(widget.company, widget.current, "race", "Other"),
+              getSalaryData(widget.company, widget.current, "race", "White",
+                  widget.job_name),
+              getSalaryData(widget.company, widget.current, "race", "Black",
+                  widget.job_name),
+              getSalaryData(widget.company, widget.current, "race", "Asian",
+                  widget.job_name),
+              getSalaryData(widget.company, widget.current, "race", "Latino",
+                  widget.job_name),
+              getSalaryData(widget.company, widget.current, "race", "Other",
+                  widget.job_name),
               getCurrentSalaryData(widget.current),
               getAllData(widget.company),
             ]),

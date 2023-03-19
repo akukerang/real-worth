@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_worth/registration/create_account.dart';
 import '../components/my_button.dart';
-import '../components/rect_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../components/my_textfield.dart';
 
@@ -69,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 32),
 
                   //username textfield
                   MyTextField(
@@ -110,21 +109,6 @@ class _LoginPageState extends State<LoginPage> {
                         loginFail ? 'Wrong email or Wrong password' : null,
                   ),
 
-                  const SizedBox(height: 10),
-
-                  // forgot password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                      ],
-                    ),
-                  ),
-
                   const SizedBox(height: 20),
 
                   //sign in button
@@ -158,15 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 20),
-
-                  //google or email
-                  const RectTile(
-                    imagePath: 'lib/images/google.png',
-                    imgDis: 'Continue with Google',
-                  ),
-
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 30),
 
                   //or continue with
 

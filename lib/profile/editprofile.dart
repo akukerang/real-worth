@@ -62,11 +62,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-
-                        const SizedBox(height: 16.0),
-
-                        const Label(label: 'Job Title'),
-
+                        const Label(label: "Job Title"),
                         MyTextField(
                           initialValue: _jobTitle,
                           hintText: "Job Title",
@@ -82,9 +78,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             });
                           },
                         ),
-
-                        const Label(label: 'Salary'),
-                        
+                        const Label(label: "Salary"),
                         MyTextField(
                           keyboardType: TextInputType.number,
                           inputFormatters: [
@@ -104,9 +98,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             return null;
                           },
                         ),
-                        
-                        const Label(label: 'Years Worked'),
-                       
+                        const Label(label: "Years Worked"),
                         MyTextField(
                           initialValue: _years,
                           hintText: "Years worked",
@@ -126,9 +118,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             });
                           },
                         ),
-
-                        const Label(label: 'Race'),
-                        
+                        const Label(label: "Race"),
                         MyDropdown(
                             menuItems: const [
                               'White',
@@ -145,15 +135,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               });
                             },
                             onChanged: (value) {},
-                            validator: (value) {}
-                          ),
-                        
-                        const Label(label: 'Gender'),
-                        
+                            validator: (value) {}),
+                        const Label(label: "Gender"),
                         MyDropdown(
-                            menuItems: const ['Male',
-                                              'Female',
-                                              'Other'],
+                            menuItems: const ['Male', 'Female', 'Other'],
                             value: _gender,
                             hint: 'Select Gender',
                             onSaved: (value) {
@@ -162,11 +147,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               });
                             },
                             onChanged: (value) {},
-                            validator: (value) {},
-                          ),
-
-                        const Label(label:"Education Level"),
-                        
+                            validator: (value) {}),
+                        const Label(label: "Education Level"),
                         MyDropdown(
                           menuItems: const [
                             'None',
@@ -186,8 +168,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           onChanged: (value) {},
                           validator: (value) {},
                         ),
-
-                        const SizedBox(height: 32.0),
+                        SizedBox(height: 24),
                         MyButton(
                           label: "Save Changes",
                           onTap: () async {

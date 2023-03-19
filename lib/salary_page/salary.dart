@@ -15,6 +15,7 @@ class SalaryPage extends StatefulWidget {
 
 class _SalaryPageState extends State<SalaryPage> {
   String companyId = '';
+  String job_name = '';
 
   Future<void> setCompanyID() async {
     try {
@@ -24,10 +25,19 @@ class _SalaryPageState extends State<SalaryPage> {
     }
   }
 
+  Future<void> setJobName() async {
+    try {
+      job_name = await getJobName(widget.current);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     setCompanyID();
+    setJobName();
   }
 
   @override
@@ -71,26 +81,8 @@ class _SalaryPageState extends State<SalaryPage> {
                     category: widget.category,
                     current: widget.current,
                     company: companyId,
+                    job_name: job_name,
                   ),
-                ),
-              ),
-              const Text(
-                "Similar Salary in the Area",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.all(24),
-                height: 150,
-                child: const JobContainer(
-                  company: "Google",
-                  salary: "\$120000",
-                  location: "Atlanta, GA",
-                  position: "Software Engineer",
                 ),
               ),
               const Text(

@@ -50,6 +50,12 @@ Future<String> getCompanyID(String docID) async {
   return snap.get('job.company_id');
 }
 
+Future<String> getJobName(String docID) async {
+  final snap =
+      await FirebaseFirestore.instance.collection('users').doc(docID).get();
+  return snap.get('job.job_title');
+}
+
 Future<bool> checkEmailExist(String email) async {
   List<String> temp =
       await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);

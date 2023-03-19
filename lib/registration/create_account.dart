@@ -47,7 +47,7 @@ class _CreateAccountState extends State<CreateAccount> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const SizedBox(height: 60),
+            //const SizedBox(height: 60),
 
             //title
             Text(
@@ -58,7 +58,9 @@ class _CreateAccountState extends State<CreateAccount> {
               ),
             ),
 
-            Label(label: "Email"),
+            const SizedBox(height: 20),
+
+            const Label(label: "Email"),
             //email
             MyTextField(
               controller: emailController,
@@ -79,7 +81,7 @@ class _CreateAccountState extends State<CreateAccount> {
               },
             ),
 
-            Label(label: "Password"),
+            const Label(label: "Password"),
 
             //password and confirm password
             MyTextField(
@@ -98,7 +100,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   _password = value!.trim();
                 }),
 
-            Label(label: "Confirm Password"),
+            const Label(label: "Confirm Password"),
 
             MyTextField(
               hintText: "Confirm Password",

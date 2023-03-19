@@ -7,12 +7,19 @@ class Label extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      const SizedBox(height: 16.0),
-      Text(
-        label,
-        style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 16.0,
+      const SizedBox(height: 25.0),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        child: Row(
+          children: [
+            Text(
+              label,
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16.5,
+              ),
+            ),
+          ],
         ),
       ),
       const SizedBox(height: 8.0),

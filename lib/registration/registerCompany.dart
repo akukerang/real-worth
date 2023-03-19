@@ -35,7 +35,6 @@ class _RegisterCompanyState extends State<RegisterCompany> {
           padding: const EdgeInsets.all(20.0),
           children: [
             const Label(label: "Company Name"),
-
             MyTextField(
               controller: _compNameController,
               hintText: "Enter the company name",
@@ -51,9 +50,7 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 _compName = value!.trim();
               },
             ),
-            
             const Label(label: "City"),
-
             MyTextField(
               controller: _cityController,
               keyboardType: TextInputType.name,
@@ -70,9 +67,7 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 _city = value!.trim();
               },
             ),
-
             const Label(label: "State"),
-
             MyTextField(
               controller: _stateController,
               hintText: "Enter the state",
@@ -92,9 +87,7 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 _state = value!.trim();
               },
             ),
-
             const SizedBox(height: 32.0),
-            
             ElevatedButton(
               child: const Text('Add Company'),
               onPressed: () async {
