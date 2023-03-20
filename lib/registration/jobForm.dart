@@ -47,7 +47,10 @@ class _JobPageState extends State<JobPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.indigo[50],
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent[400],
+        title: const Text('Job information'),),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -56,22 +59,8 @@ class _JobPageState extends State<JobPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Job Information',
-                          style: TextStyle(
-                            color: Colors.grey[700],
-                            fontSize: 32,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  
-                  const SizedBox(height: 50),
+
+                  //const SizedBox(height: 30),
                   
                   const Label(label: "Job Title"),
                   MyTextField(
@@ -164,6 +153,7 @@ class _JobPageState extends State<JobPage> {
                       }
                     },
                   ),
+                  const SizedBox(height: 50),
                 ],
               ),
             ),

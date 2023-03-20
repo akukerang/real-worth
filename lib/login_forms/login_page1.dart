@@ -49,27 +49,34 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.indigo[50],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
               child: Column(
-                //shrinkWrap: true,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
 
-                  Text(
+                // Image.asset(
+                //   'lib/images/Real-Worth-Logo.png',
+                //   height: 175,
+                //   ),
+
+
+                  const Text(
                     'Welcome!',
                     style: TextStyle(
-                      color: Colors.grey[700],
+                      color: Colors.black87,
                       fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Rubik Iso'
                     ),
                   ),
 
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 40),
 
                   //username textfield
                   MyTextField(
@@ -89,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         loginFail ? 'Wrong email or Wrong password' : null,
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
 
                   //password TextField
                   MyTextField(
@@ -130,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                   //sign in button
                   MyButton(onTap: signUserIn, label: "Sign In"),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 45),
 
                   //or continue with
                   Padding(
@@ -186,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           'Create an account',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Colors.deepPurpleAccent,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),

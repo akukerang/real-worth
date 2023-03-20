@@ -75,7 +75,9 @@ class _changeEmailState extends State<changeEmail> {
                   },
                 ),
                 const Label(label: "New Email"),
+                
                 const SizedBox(height: 8.0),
+                
                 MyTextField(
                   controller: _newEmailController,
                   hintText: "Enter a new email",
@@ -94,7 +96,9 @@ class _changeEmailState extends State<changeEmail> {
                     return null;
                   },
                 ),
+                
                 const Label(label: "Confirm Email"),
+                
                 MyTextField(
                   controller: _newEmail2Controller,
                   hintText: "Enter the email again",
@@ -113,7 +117,9 @@ class _changeEmailState extends State<changeEmail> {
                     }
                   },
                 ),
+                
                 const SizedBox(height: 32.0),
+                
                 MyButton(
                   label: "Save Changes",
                   onTap: () async {
