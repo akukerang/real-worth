@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_worth/registration/create_account.dart';
 import '../components/my_button.dart';
-import '../components/rect_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../components/my_textfield.dart';
 
@@ -49,34 +48,27 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo[50],
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
               child: Column(
+                //shrinkWrap: true,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
 
-                // Image.asset(
-                //   'lib/images/Real-Worth-Logo.png',
-                //   height: 175,
-                //   ),
-
-
-                  const Text(
+                  Text(
                     'Welcome!',
                     style: TextStyle(
-                      color: Colors.black87,
+                      color: Colors.grey[700],
                       fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Rubik Iso'
                     ),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 32),
 
                   //username textfield
                   MyTextField(
@@ -96,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                         loginFail ? 'Wrong email or Wrong password' : null,
                   ),
 
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 10),
 
                   //password TextField
                   MyTextField(
@@ -117,27 +109,12 @@ class _LoginPageState extends State<LoginPage> {
                         loginFail ? 'Wrong email or Wrong password' : null,
                   ),
 
-                  const SizedBox(height: 10),
-
-                  // forgot password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                      ],
-                    ),
-                  ),
-
                   const SizedBox(height: 20),
 
                   //sign in button
                   MyButton(onTap: signUserIn, label: "Sign In"),
 
-                  const SizedBox(height: 45),
+                  const SizedBox(height: 40),
 
                   //or continue with
                   Padding(
@@ -165,15 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 20),
-
-                  //google or email
-                  const RectTile(
-                    imagePath: 'lib/images/google.png',
-                    imgDis: 'Continue with Google',
-                  ),
-
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 30),
 
                   //or continue with
 
@@ -193,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           'Create an account',
                           style: TextStyle(
-                            color: Colors.deepPurpleAccent,
+                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
