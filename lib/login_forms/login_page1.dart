@@ -60,10 +60,11 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const SizedBox(height: 60),
 
-                  Text(
+                  const Text(
                     'Welcome!',
                     style: TextStyle(
-                      color: Colors.grey[700],
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
                       fontSize: 32,
                     ),
                   ),

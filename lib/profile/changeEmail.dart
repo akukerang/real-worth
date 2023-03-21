@@ -41,7 +41,9 @@ class _changeEmailState extends State<changeEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent[400],
         title: const Text("Change Email"),
       ),
       body: SingleChildScrollView(
@@ -144,7 +146,7 @@ class _changeEmailState extends State<changeEmail> {
                                       "Your email has been successfully changed"),
                                   actions: [
                                     ElevatedButton(
-                                        style: componentStyle.elevatedStyle(),
+                                        style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple[400]),//elevatedStyle(),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },

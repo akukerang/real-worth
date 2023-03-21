@@ -47,7 +47,9 @@ class _changePasswordState extends State<changePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent[400],
         title: const Text("Edit Password"),
       ),
       body: SingleChildScrollView(
@@ -138,7 +140,7 @@ class _changePasswordState extends State<changePassword> {
                                       "Your password has been successfully changed"),
                                   actions: [
                                     ElevatedButton(
-                                        style: componentStyle.elevatedStyle(),
+                                        style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurpleAccent[400]),//elevatedStyle(),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },

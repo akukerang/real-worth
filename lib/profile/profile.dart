@@ -56,7 +56,9 @@ class _ProfilePageState extends State<ProfilePage> {
           Map<String, dynamic> company =
               snapshot.data![1].data() as Map<String, dynamic>;
           return Scaffold(
+            backgroundColor: Colors.indigo[50],
             appBar: AppBar(
+              backgroundColor: Colors.deepPurpleAccent[400],
               title: const Text('Your Profile'),
               actions: <Widget>[
                 IconButton(
@@ -168,7 +170,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 24.0),
                   Center(
                     child: ElevatedButton(
-                      style: componentStyle.elevatedStyle(),
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurpleAccent[400]),
+                      //style: componentStyle.elevatedStyle(),
                       child: const Text('Edit Profile'),
                       onPressed: () {
                         Navigator.push(

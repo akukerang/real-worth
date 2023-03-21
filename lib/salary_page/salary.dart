@@ -43,8 +43,10 @@ class _SalaryPageState extends State<SalaryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
         title: const Text('Salary Page'),
+        backgroundColor: Colors.deepPurpleAccent[400],
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.refresh),
