@@ -16,18 +16,15 @@ class SalaryPage extends StatefulWidget {
 class _SalaryPageState extends State<SalaryPage> {
   String companyId = '';
   String job_name = '';
+  int salary = 0;
+  String years = '';
 
-  Future<void> setCompanyID() async {
+  Future<void> setValues() async {
     try {
       companyId = await getCompanyID(widget.current);
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  Future<void> setJobName() async {
-    try {
       job_name = await getJobName(widget.current);
+      salary = await getSalary(widget.current);
+      years = await getYears(widget.current);
     } catch (e) {
       print(e);
     }
@@ -36,8 +33,7 @@ class _SalaryPageState extends State<SalaryPage> {
   @override
   void initState() {
     super.initState();
-    setCompanyID();
-    setJobName();
+    setValues();
   }
 
   @override
@@ -52,14 +48,14 @@ class _SalaryPageState extends State<SalaryPage> {
             icon: const Icon(Icons.refresh),
             onPressed: () {
               setState(() {
-                setCompanyID();
+                setValues();
               });
             },
           )
         ],
       ),
       body: FutureBuilder(
-        future: setCompanyID(),
+        future: setValues(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -87,6 +83,20 @@ class _SalaryPageState extends State<SalaryPage> {
                   ),
                 ),
               ),
+              const Text(
+                "Your Stats",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'SF Pro Rounded',
+                  fontSize: 24,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              Container(
+                  margin: const EdgeInsets.all(24),
+                  height: 120,
+                  child: JobContainer(
+                      position: job_name, years: years, salary: salary)),
               const Text(
                 "Tips for Asking for a Raise",
                 style: TextStyle(
