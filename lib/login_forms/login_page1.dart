@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.indigo[50],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -163,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           'Create an account',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Colors.deepPurpleAccent,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
