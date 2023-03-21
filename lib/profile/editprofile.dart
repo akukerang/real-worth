@@ -51,8 +51,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
             _race = currentUser['race'];
             _gender = currentUser['gender'];
             return Scaffold(
+              backgroundColor: Colors.indigo[50],
               appBar: AppBar(
                 title: const Text("Edit Profile"),
+                backgroundColor: Colors.deepPurpleAccent[400],
               ),
               body: SingleChildScrollView(
                 child: Form(

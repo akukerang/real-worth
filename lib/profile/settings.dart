@@ -11,7 +11,9 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent[400],
         title: const Text('Settings'),
       ),
       body: ListView(
@@ -27,7 +29,7 @@ class SettingsPage extends StatelessWidget {
                           )));
             },
           ),
-          const Divider(),
+          const Divider(thickness: 1.0),
           ListTile(
             title: const Text('Change Password'),
             onTap: () {
@@ -37,7 +39,7 @@ class SettingsPage extends StatelessWidget {
                       builder: (context) => const changePassword()));
             },
           ),
-          const Divider(),
+          const Divider(thickness: 1.0),
           ListTile(
             title: const Text('Change Email'),
             onTap: () {
@@ -45,7 +47,7 @@ class SettingsPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const changeEmail()));
             },
           ),
-          const Divider(),
+          const Divider(thickness: 1.0),
         ],
       ),
     );

@@ -24,7 +24,7 @@ class _InformationPageState extends State<InformationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.indigo[50],
         body: SafeArea(
             child: Center(
           child: SingleChildScrollView(
@@ -34,24 +34,25 @@ class _InformationPageState extends State<InformationPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //your Information title
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Your Information',
-                            style: TextStyle(
-                              color: Colors.grey[700],
-                              fontSize: 32,
-                            ),
-                          ),
-                        ],
+                  
+                          
+                    const Text(
+                      'Your Information',
+                      style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 34,
+                      fontWeight: FontWeight.w500
                       ),
                     ),
 
+                        
+                      
+                    
+
                     const SizedBox(height: 50),
+                    
                     const Label(label: "Race"),
-                    //race
+                    
                     MyDropdown(
                         menuItems: const [
                           'White',
@@ -71,12 +72,10 @@ class _InformationPageState extends State<InformationPage> {
                           if (value == null) {
                             return 'Please select a race';
                           }
-                          // return null;
                         }),
 
                     const Label(label: "Gender"),
 
-                    //gender
                     MyDropdown(
                         menuItems: const ['Male', 'Female', 'Other'],
                         value: _gender,
@@ -95,7 +94,6 @@ class _InformationPageState extends State<InformationPage> {
 
                     const Label(label: "Education"),
 
-                    //education
                     MyDropdown(
                       menuItems: const [
                         'None',

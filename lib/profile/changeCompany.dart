@@ -83,6 +83,7 @@ class _EditCompanyState extends State<EditCompany> {
                     const Text("Your company has been successfully changed"),
                 actions: [
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurpleAccent[400]),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -96,7 +97,9 @@ class _EditCompanyState extends State<EditCompany> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent[400],
         title: const Text('Company List'),
       ),
       body: Column(
@@ -168,6 +171,7 @@ class _EditCompanyState extends State<EditCompany> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurpleAccent[400]),
                     onPressed: _submitSelection,
                     child: const Text('Select Company'),
                   ),
@@ -177,6 +181,7 @@ class _EditCompanyState extends State<EditCompany> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurpleAccent[400],
         onPressed: () {
           Navigator.push(
             context,

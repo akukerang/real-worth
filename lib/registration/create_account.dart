@@ -39,6 +39,7 @@ class _CreateAccountState extends State<CreateAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
         body: SafeArea(
             child: Center(
                 child: SingleChildScrollView(
@@ -50,11 +51,12 @@ class _CreateAccountState extends State<CreateAccount> {
             //const SizedBox(height: 60),
 
             //title
-            Text(
-              'Sign up!',
+            const Text(
+              'Sign up',
               style: TextStyle(
-                color: Colors.grey[700],
-                fontSize: 32,
+                color: Colors.black,
+                fontSize: 34,
+                fontWeight: FontWeight.w500
               ),
             ),
 

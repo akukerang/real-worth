@@ -83,8 +83,10 @@ class _CompanyListState extends State<CompanyList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
         title: const Text('Company List'),
+        backgroundColor: Colors.deepPurpleAccent[400],
       ),
       body: Column(
         children: [
@@ -112,7 +114,7 @@ class _CompanyListState extends State<CompanyList> {
                     padding: const EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
                       color: _selectedCompany == company
-                          ? Colors.blue[100]
+                          ? Colors.indigo[100]
                           : Colors.white,
                       borderRadius: BorderRadius.circular(8.0),
                       boxShadow: [
@@ -155,6 +157,9 @@ class _CompanyListState extends State<CompanyList> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.deepPurpleAccent[400]
+                    ),
                     onPressed: _submitSelection,
                     child: const Text('Select Company'),
                   ),
@@ -164,6 +169,7 @@ class _CompanyListState extends State<CompanyList> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurpleAccent[400],
         onPressed: () {
           Navigator.push(
             context,

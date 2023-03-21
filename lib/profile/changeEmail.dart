@@ -41,7 +41,9 @@ class _changeEmailState extends State<changeEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent[400],
         title: const Text("Change Email"),
       ),
       body: SingleChildScrollView(
@@ -75,7 +77,9 @@ class _changeEmailState extends State<changeEmail> {
                   },
                 ),
                 const Label(label: "New Email"),
+                
                 const SizedBox(height: 8.0),
+                
                 MyTextField(
                   controller: _newEmailController,
                   hintText: "Enter a new email",
@@ -94,7 +98,9 @@ class _changeEmailState extends State<changeEmail> {
                     return null;
                   },
                 ),
+                
                 const Label(label: "Confirm Email"),
+                
                 MyTextField(
                   controller: _newEmail2Controller,
                   hintText: "Enter the email again",
@@ -113,7 +119,9 @@ class _changeEmailState extends State<changeEmail> {
                     }
                   },
                 ),
+                
                 const SizedBox(height: 32.0),
+                
                 MyButton(
                   label: "Save Changes",
                   onTap: () async {
@@ -138,7 +146,7 @@ class _changeEmailState extends State<changeEmail> {
                                       "Your email has been successfully changed"),
                                   actions: [
                                     ElevatedButton(
-                                        style: componentStyle.elevatedStyle(),
+                                        style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple[400]),//elevatedStyle(),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },

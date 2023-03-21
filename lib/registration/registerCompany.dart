@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:real_worth/components/my_button.dart';
 
 import '../components/label.dart';
 import '../components/my_textfield.dart';
@@ -26,7 +27,9 @@ class _RegisterCompanyState extends State<RegisterCompany> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent[400],
         title: const Text('Add a Company'),
       ),
       body: Form(
@@ -88,9 +91,9 @@ class _RegisterCompanyState extends State<RegisterCompany> {
               },
             ),
             const SizedBox(height: 32.0),
-            ElevatedButton(
-              child: const Text('Add Company'),
-              onPressed: () async {
+            MyButton(
+              label: 'Add Company',
+              onTap: () async {
                 exists = await checkCompanyExist(_compNameController.text,
                     _cityController.text.trim(), _stateController.text.trim());
                 if (_formKey.currentState!.validate()) {

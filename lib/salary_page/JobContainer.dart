@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class JobContainer extends StatelessWidget {
-  final String company;
   final String position;
-  final String location;
-  final String salary;
+  final String years;
+  final int salary;
 
-  const JobContainer({
+  JobContainer({
     Key? key,
-    required this.company,
     required this.position,
-    required this.location,
+    required this.years,
     required this.salary,
   }) : super(key: key);
+
+  final currencyFormat = NumberFormat.simpleCurrency();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      padding: const EdgeInsets.all(16.0),
+      height: 100,
+      padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.0),
@@ -35,34 +36,42 @@ class JobContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            company,
+            position,
             style: const TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 4.0),
-          Text(
-            position,
-            style: const TextStyle(
-              fontSize: 16.0,
-            ),
+          Row(
+            children: [
+              const Text(
+                "Years worked: ",
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                years,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 4.0),
           Row(
             children: [
-              const Icon(Icons.location_on),
-              const SizedBox(width: 8.0),
-              Text(location),
+              const Text("Salary: ",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  )),
+              Text(currencyFormat.format(salary),
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  )),
             ],
-          ),
-          const SizedBox(height: 4.0),
-          Text(
-            salary,
-            style: const TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-            ),
           ),
         ],
       ),
