@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_worth/salary_page/raiseTips.dart';
 import 'JobContainer.dart';
 import 'Scatter.dart';
 import 'getData.dart';
@@ -94,7 +95,7 @@ class _SalaryPageState extends State<SalaryPage> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.all(24),
+                  margin: const EdgeInsets.fromLTRB(24, 14, 24, 24),
                   height: 120,
                   child: JobContainer(
                       position: job_name, years: years, salary: salary)),
@@ -107,102 +108,7 @@ class _SalaryPageState extends State<SalaryPage> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Research",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                "It’s important to understand the market you’re currently in based on your role within your respective field, this gives you a grasp on what is a reasonable salary amount to be asking for. Real Worth provides insight on this with our anonymous reports, demonstrating where you stand in the market.",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 16,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Evidence",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                "Be sure to prepare evidence as to why this raise is deserved to begin with, state your achievements within the company and the beneficial changes that have happened since you’ve arrived. This alongside your understanding of the market are both important to figuring out what exactly you want in a raise, having a clear demand whether in terms of money or benefits in mind before approaching your boss is key.",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 16,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Timing",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                "Be sure to pick the proper time to speak to your boss, perhaps after you’ve successfully completed a project or have been having good performance within the company. This will make your boss more willing toward your request.",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 16,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const Text(
-                "Confidence",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                "Be confident in your ability to secure and speak to your boss for this raise, and if it isn’t met with success the first time, don’t give up! Continue to follow up with your boss on this raise and don’t let your failures discourage you, gather feedback on what steps you can take to make your case even stronger than it already is.",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'SF Pro Rounded',
-                  fontSize: 16,
-                ),
-                textAlign: TextAlign.center,
-              ),
+              const raiseTips(),
             ],
           ));
         },
