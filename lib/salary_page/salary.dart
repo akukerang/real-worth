@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_worth/salary_page/raiseTips.dart';
 import 'JobContainer.dart';
 import 'Scatter.dart';
 import 'getData.dart';
@@ -60,7 +61,8 @@ class _SalaryPageState extends State<SalaryPage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
-          return Column(
+          return SingleChildScrollView(
+              child: Column(
             children: [
               Container(
                 margin: const EdgeInsets.only(
@@ -93,7 +95,7 @@ class _SalaryPageState extends State<SalaryPage> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.all(24),
+                  margin: const EdgeInsets.fromLTRB(24, 14, 24, 24),
                   height: 120,
                   child: JobContainer(
                       position: job_name, years: years, salary: salary)),
@@ -106,8 +108,9 @@ class _SalaryPageState extends State<SalaryPage> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
+              const raiseTips(),
             ],
-          );
+          ));
         },
       ),
     );
