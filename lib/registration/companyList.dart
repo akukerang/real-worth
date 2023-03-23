@@ -96,8 +96,16 @@ class _CompanyListState extends State<CompanyList> {
               controller: _searchController,
               decoration: const InputDecoration(
                 hintText: 'Search companies...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.deepPurpleAccent
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.deepPurpleAccent,
+                    width: 1.5
+                  )
+                ),
               ),
             ),
           ),

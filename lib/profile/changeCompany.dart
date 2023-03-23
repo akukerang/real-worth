@@ -110,7 +110,16 @@ class _EditCompanyState extends State<EditCompany> {
               controller: _searchController,
               decoration: const InputDecoration(
                 hintText: 'Search companies...',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.deepPurpleAccent 
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.deepPurpleAccent,
+                    width: 1.5
+                    ),
+                ),
                 border: OutlineInputBorder(),
               ),
             ),
