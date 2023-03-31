@@ -1,11 +1,6 @@
 # real_worth
 Salary sharing app.
 
-## Screenshots
-<img src="/screenshots/home.png">
-<img src="/screenshots/edit_profile.png">
-<img src="/screenshots/company.png">
-
 ## Requirements
 - `Flutter >3.7.6`
 - `Android Emulator`
@@ -14,9 +9,15 @@ Salary sharing app.
 - `Flutterfire`
   - We used a private firebase project. Would need to setup a seperate firebase project.
   
-  
  ## Instructions
  - Clone the repo
  - `flutter pub get`
  - Start the android emulator
  - `flutter run`
+ 
+## Screenshots
+<div float="left">
+<img src="/screenshots/home.png" width="16%">
+<img src="/screenshots/edit_profile.png" width="16%">
+<img src="/screenshots/company.png" width="16%">
+</div>
